@@ -8,13 +8,13 @@ class UserAuthRoute extends FileRoute {
         $email = $_REQUEST["email"];
         $pwd = $this->encryptAES256($_REQUEST["pwd"]);
 
-        $val = $this->getRow("SELECT * FROM tblCustomer WHERE email='{$email}' AND email != 'Unknown' AND `password`='{$pwd}' LIMIT 1");
+        $val = $this->getRow("SELECT * FROM tblUser WHERE email='{$email}' AND email != 'Unknown' AND `password`='{$pwd}' LIMIT 1");
         if($val != null){
             if($val["status"] == "2"){
                 return Routable::response(3, "인증 대기중인 계정입니다.\n인증 후 이용해주세요.");
             }else{
                 AuthUtil::requestLogin($val);
-                $upt = "UPDATE tblCustomer SET accessDate=NOW() WHERE `id`='{$val["id"]}'";
+                $upt = "UPDATE tblUser SET accessDate=NOW() WHERE `id`='{$val["id"]}'";
                 $this->update($upt);
                 return Routable::response(1, "정상적으로 로그인되었습니다.");
             }
@@ -116,6 +116,9 @@ class UserAuthRoute extends FileRoute {
     function setUserCharacter(){
         $userId = $_REQUEST['userId'];
         $charList = $_REQUEST['charList'];
+        if(count($charList) < 3) return Routable::response(2, "관심사를 3개 이상 선택해 주세요");
+        if(count($charList) > 6) return Routable::response(3, "관심사는 최대 6개까지 선택할 수 있습니다.");
+
         $ins = "DELETE FROM tblCharMap WHERE userId = '{$userId}'";
         $this->update($ins);
         foreach($charList as $item){
