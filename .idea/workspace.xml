@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e50db211-c88b-41ae-bb74-2e890a343a6e" name="Default" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>saveQ</find>
+      <find>skill</find>
+      <find>stat</find>
+      <find>percent</find>
+      <find>alert</find>
+      <find>$statData[&quot;count&quot;]</find>
+      <find>faq</find>
+      <find>chart</find>
+      <find>chart.min</find>
+      <find>/main</find>
+      <find>/midnight.</find>
+      <find>tblNotice</find>
+      <find>response</find>
+      <find>colorlib</find>
+      <find>bulkapp</find>
+      <find>unique</find>
+      <find>mysqli_real_escape_string($this-&gt;database, $_REQUEST[</find>
+      <find>iden</find>
+      <find>delete</find>
+      <find>ajaxu</find>
+      <find>setNick</find>
+      <find>setPro</find>
+      <find>like</find>
+      <find>g</find>
+      <find>setLa</find>
+      <find>lat</find>
+      <find>getIden</find>
+      <find>followingyou</find>
+      <find>getUser</find>
+      <find>distan</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>#40C1AF</replace>
+      <replace>logo.png</replace>
+      <replace>&lt;?=$email?&gt;</replace>
+      <replace>&lt;?=$item[&quot;imgPath&quot;]?&gt;</replace>
+      <replace>#2d2d2d</replace>
+      <replace>'피클코드'</replace>
+      <replace>#32806f</replace>
+      <replace>main</replace>
+      <replace>tblCustomer</replace>
+      <replace>input disabled</replace>
+      <replace>$stat</replace>
+      <replace>/midnight</replace>
+      <replace>/main.</replace>
+      <replace>PickleCode</replace>
+      <replace>미드나잇</replace>
+      <replace>$this-&gt;req(</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/css/main.css" />
+        <option value="$PROJECT_DIR$/faq.php" />
+        <option value="$PROJECT_DIR$/error/er404.php" />
+        <option value="$PROJECT_DIR$/error/err404.php" />
+        <option value="$PROJECT_DIR$/error/err400.php" />
+        <option value="$PROJECT_DIR$/error/err401.php" />
+        <option value="$PROJECT_DIR$/error/err503.php" />
+        <option value="$PROJECT_DIR$/error/inc/header.php" />
+        <option value="$PROJECT_DIR$/notice.php" />
+        <option value="$PROJECT_DIR$/noticeDetail.php" />
+        <option value="$USER_HOME$/Desktop/language.php" />
+        <option value="$USER_HOME$/Desktop/프로젝트/BibleTime/web_backup/pages/supportDetail.php" />
+        <option value="$USER_HOME$/Desktop/프로젝트/BibleTime/classes_backup/WebSupport.php" />
+        <option value="$USER_HOME$/Desktop/프로젝트/BibleTime/classes_backup/WebSubscription.php" />
+        <option value="$USER_HOME$/Desktop/프로젝트/BibleTime/classes_backup/Management.php" />
+        <option value="$PROJECT_DIR$/queryDetail.php" />
+        <option value="$PROJECT_DIR$/profile.php" />
+        <option value="$PROJECT_DIR$/admin/queryManage.php" />
+        <option value="$PROJECT_DIR$/admin/projectManage.php" />
+        <option value="$PROJECT_DIR$/ajaxPages/ajaxAdminQueryList.php" />
+        <option value="$PROJECT_DIR$/query.php" />
+        <option value="$PROJECT_DIR$/admin/queryManageDetail.php" />
+        <option value="$PROJECT_DIR$/projectDetail.php" />
+        <option value="$PROJECT_DIR$/ajaxPages/ajaxPQueryList.php" />
+        <option value="$PROJECT_DIR$/ajaxPages/ajaxQueryList.php" />
+        <option value="$PROJECT_DIR$/ajaxPages/ajaxAdminQueryDetailList.php" />
+        <option value="$PROJECT_DIR$/ajaxPages/ajaxProjectList.php" />
+        <option value="$PROJECT_DIR$/admin/inc/header.php" />
+        <option value="$PROJECT_DIR$/admin/logs.php" />
+        <option value="$PROJECT_DIR$/admin/index.php" />
+        <option value="$PROJECT_DIR$/shared/public/classes/AdminRoute.php" />
+        <option value="$PROJECT_DIR$/admin/faqManage.php" />
+        <option value="$PROJECT_DIR$/admin/inc/footer.php" />
+        <option value="$PROJECT_DIR$/shared/bases/Configs.php" />
+        <option value="$PROJECT_DIR$/blog.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/inc/incf.php" />
+        <option value="$PROJECT_DIR$/shared/public/route.php" />
+        <option value="$PROJECT_DIR$/shared/bases/Const.php" />
+        <option value="$PROJECT_DIR$/shared/public/classes/Routable.php" />
+        <option value="$PROJECT_DIR$/shared/public/classes/WebRoute.php" />
+        <option value="$PROJECT_DIR$/shared/bases/Databases.php" />
+        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/inc/footer.php" />
+        <option value="$PROJECT_DIR$/inc/header.php" />
+        <option value="$PROJECT_DIR$/signin.php" />
+        <option value="$PROJECT_DIR$/findPass.php" />
+        <option value="$PROJECT_DIR$/inc/inch.php" />
+        <option value="$PROJECT_DIR$/shared/public/classes/BoardRoute.php" />
+        <option value="$PROJECT_DIR$/shared/public/classes/UserAuthRoute.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
+  </component>
+  <component name="ProjectId" id="1rnX98BaLoUbS1Yal7saS5RL2NO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="midnight" type="b2602c69:ProjectViewProjectNode" />
+              <item name="midnight" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="midnight" type="b2602c69:ProjectViewProjectNode" />
+              <item name="midnight" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="midnight" type="b2602c69:ProjectViewProjectNode" />
+              <item name="midnight" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="fonts" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="midnight" type="b2602c69:ProjectViewProjectNode" />
+              <item name="midnight" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="img" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="midnight" type="b2602c69:ProjectViewProjectNode" />
+              <item name="midnight" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="inc" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="midnight" type="b2602c69:ProjectViewProjectNode" />
+              <item name="midnight" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="shared" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="midnight" type="b2602c69:ProjectViewProjectNode" />
+              <item name="midnight" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="shared" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="bases" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="midnight" type="b2602c69:ProjectViewProjectNode" />
+              <item name="midnight" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="shared" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="midnight" type="b2602c69:ProjectViewProjectNode" />
+              <item name="midnight" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="shared" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="classes" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="NEW_TOOLWINDOW_STRIPE_DEFAULTS" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="notice&#9;FILE&#9;file://C:/xampp/htdocs/main/notice.php&#10;faq&#9;FILE&#9;file://C:/xampp/htdocs/main/faq.php&#10;AdminRoute&#9;FILE&#9;file://C:/xampp/htdocs/main/shared/public/classes/AdminRoute.php" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\midnight" />
+      <recent name="C:\xampp\htdocs\midnight\shared\public\classes" />
+      <recent name="C:\xampp\htdocs\midnight\inc" />
+      <recent name="C:\xampp\htdocs\main\admin" />
+      <recent name="C:\xampp\htdocs\main\ajaxPages" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e50db211-c88b-41ae-bb74-2e890a343a6e" name="Default" comment="" />
+      <created>1544322213021</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1544322213021</updated>
+      <workItem from="1544322214251" duration="19902000" />
+      <workItem from="1544344971342" duration="753000" />
+      <workItem from="1544362887717" duration="9633000" />
+      <workItem from="1544373077453" duration="92000" />
+      <workItem from="1544406134626" duration="2934000" />
+      <workItem from="1544414292796" duration="1183000" />
+      <workItem from="1544423617472" duration="1984000" />
+      <workItem from="1544599667102" duration="901000" />
+      <workItem from="1545099820416" duration="31000" />
+      <workItem from="1545208447491" duration="3429000" />
+      <workItem from="1545212003097" duration="191000" />
+      <workItem from="1546931387008" duration="207000" />
+      <workItem from="1547018699909" duration="919000" />
+      <workItem from="1547019785193" duration="129000" />
+      <workItem from="1547031047425" duration="301000" />
+      <workItem from="1547082021232" duration="1228000" />
+      <workItem from="1547113628273" duration="29000" />
+      <workItem from="1547124115868" duration="10000" />
+      <workItem from="1550380179578" duration="15556000" />
+      <workItem from="1552552050889" duration="26000" />
+      <workItem from="1558278767021" duration="924000" />
+      <workItem from="1559141855351" duration="102000" />
+      <workItem from="1559141967396" duration="5000" />
+      <workItem from="1559142008815" duration="13000" />
+      <workItem from="1559257005255" duration="233000" />
+      <workItem from="1559257424978" duration="54000" />
+      <workItem from="1559257528161" duration="598000" />
+      <workItem from="1559281855637" duration="34000" />
+      <workItem from="1581095853172" duration="9137000" />
+      <workItem from="1581147244513" duration="11327000" />
+      <workItem from="1581303484941" duration="46539000" />
+      <workItem from="1581993697403" duration="6394000" />
+      <workItem from="1619612675803" duration="1119000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="134798000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27557412" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/Desktop/프로젝트/BibleTime/web_backup/pages/supportDetail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="250" column="18" lean-forward="false" selection-start-line="250" selection-start-column="18" selection-end-line="250" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/프로젝트/BibleTime/admin/pages/customerManage/customerManualB.php" />
+    <entry file="file://$USER_HOME$/Desktop/프로젝트/BibleTime/classes_backup/WebSupport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2945">
+          <caret line="160" column="44" lean-forward="false" selection-start-line="160" selection-start-column="44" selection-end-line="160" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/프로젝트/BibleTime/classes_backup/WebSubscription.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4294">
+          <caret line="231" column="32" lean-forward="false" selection-start-line="231" selection-start-column="32" selection-end-line="231" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/프로젝트/BibleTime/classes_backup/Management.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29374">
+          <caret line="1551" column="12" lean-forward="true" selection-start-line="1551" selection-start-column="12" selection-end-line="1551" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/error/inc/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="37" column="29" lean-forward="true" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="36" column="7" lean-forward="false" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/noticeDetail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryDetail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/projectManage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="89" column="32" lean-forward="false" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="829">
+          <caret line="131" column="22" lean-forward="false" selection-start-line="131" selection-start-column="22" selection-end-line="131" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/queryManage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="57" column="30" lean-forward="false" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/subFooter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faq.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/query.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="703">
+          <caret line="51" column="15" lean-forward="true" selection-start-line="51" selection-start-column="15" selection-end-line="51" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/queryManageDetail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="118" column="0" lean-forward="true" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="1222" column="1" lean-forward="true" selection-start-line="1222" selection-start-column="1" selection-end-line="1222" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectDetail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1463">
+          <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajaxPages/ajaxQueryList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajaxPages/ajaxPQueryList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="30" column="74" lean-forward="false" selection-start-line="30" selection-start-column="74" selection-end-line="30" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajaxPages/ajaxAdminQueryList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajaxPages/ajaxAdminQueryDetailList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="14" column="43" lean-forward="false" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajaxPages/ajaxProjectList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9386">
+          <caret line="494" column="36" lean-forward="false" selection-start-line="494" selection-start-column="36" selection-end-line="494" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/inc/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="118" column="18" lean-forward="true" selection-start-line="118" selection-start-column="18" selection-end-line="118" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/logs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="43" lean-forward="false" selection-start-line="0" selection-start-column="43" selection-end-line="0" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/faqManage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="40" lean-forward="false" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/subHeader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/inc/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1045">
+          <caret line="55" column="18" lean-forward="false" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/public/classes/AdminRoute.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="871">
+          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding>
+            <marker date="1581095920153" expanded="true" signature="570:790" ph="SELECT *, Q.... tblAccessHistory" />
+            <marker date="1581095920153" expanded="true" signature="885:2564" ph="SELECT (SELE... DUAL" />
+            <marker date="1581095920153" expanded="true" signature="910:941" ph="SELECT COUNT... tblProject" />
+            <marker date="1581095920153" expanded="true" signature="1107:1170" ph="SELECT COUNT... tblProject" />
+            <marker date="1581095920153" expanded="true" signature="1203:1235" ph="SELECT COUNT... tblCustomer" />
+            <marker date="1581095920153" expanded="true" signature="1272:1307" ph="SELECT COUNT... tblProjectWork" />
+            <marker date="1581095920153" expanded="true" signature="1340:1385" ph="SELECT COUNT... tblQuery" />
+            <marker date="1581095920153" expanded="true" signature="1419:1464" ph="SELECT COUNT... tblQuery" />
+            <marker date="1581095920153" expanded="true" signature="1498:1543" ph="SELECT COUNT... tblQuery" />
+            <marker date="1581095920153" expanded="true" signature="1657:1730" ph="SELECT IFNUL... tblProject" />
+            <marker date="1581095920153" expanded="true" signature="1935:1972" ph="SELECT COUNT... tblAccessHistory" />
+            <marker date="1581095920153" expanded="true" signature="2122:2203" ph="SELECT COUNT... tblAccessHistory" />
+            <marker date="1581095920153" expanded="true" signature="2446:2525" ph="SELECT COUNT... tblProject" />
+            <marker date="1581095920153" expanded="true" signature="2810:3245" ph="SELECT (SELE... DUAL" />
+            <marker date="1581095920153" expanded="true" signature="2834:2871" ph="SELECT COUNT... tblAccessHistory" />
+            <marker date="1581095920153" expanded="true" signature="3021:3102" ph="SELECT COUNT... tblAccessHistory" />
+            <marker date="1581095920153" expanded="true" signature="3484:3572" ph="SELECT agent... tblAccessHistory" />
+            <marker date="1581095920153" expanded="true" signature="3644:3754" ph="SELECT DATE(... " />
+            <marker date="1581095920153" expanded="true" signature="4036:4075" ph="DELETE FROM " />
+            <marker date="1581095920153" expanded="true" signature="4460:4614" ph="INSERT INTO tblFaq... " />
+            <marker date="1581095920153" expanded="true" signature="4615:4668" ph="UPDATE `titl... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="779">
+          <caret line="159" column="53" lean-forward="true" selection-start-line="159" selection-start-column="53" selection-end-line="159" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="424" column="16" lean-forward="false" selection-start-line="412" selection-start-column="16" selection-end-line="424" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="51" lean-forward="true" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contact.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1767">
+          <caret line="93" column="20" lean-forward="false" selection-start-line="93" selection-start-column="20" selection-end-line="111" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/incf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="28" column="56" lean-forward="false" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/public/route.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="34" column="10" lean-forward="true" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/bases/Configs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1152">
+          <caret line="75" column="46" lean-forward="false" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/bases/Const.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="34" column="47" lean-forward="false" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/bases/Databases.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="30" column="76" lean-forward="false" selection-start-line="30" selection-start-column="76" selection-end-line="30" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/public/classes/Routable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <marker date="1581315520922" expanded="true" signature="2962:2980" ph="SELECT 1 FRO... DUAL" />
+            <marker date="1581315520922" expanded="true" signature="3075:3135" ph="SELECT `valu... tblProperty" />
+            <marker date="1581315520922" expanded="true" signature="3252:3334" ph="SELECT * FRO... tblProperty" />
+            <marker date="1581315520922" expanded="true" signature="3441:3519" ph="SELECT `valu... tblProperty" />
+            <marker date="1581315520922" expanded="true" signature="4024:4159" ph="INSERT INTO tblProperty... " />
+            <marker date="1581315520922" expanded="true" signature="4160:4187" ph="UPDATE `valu... " />
+            <marker date="1581315520922" expanded="true" signature="4366:4458" ph="SELECT `${{$... ${{$table}}" />
+            <marker date="1581315520922" expanded="true" signature="6817:7241" ph="INSERT INTO tblDocument... " />
+            <marker date="1581315520922" expanded="true" signature="7242:7488" ph="UPDATE `titl... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/AjaxUtil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="781">
+          <caret line="127" column="0" lean-forward="true" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/signin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="42" lean-forward="false" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/findPass.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="27" lean-forward="false" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/inch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="149" column="38" lean-forward="false" selection-start-line="149" selection-start-column="38" selection-end-line="149" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/public/classes/WebRoute.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="58" lean-forward="false" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
+          <folding>
+            <marker date="1581382958335" expanded="true" signature="428:592" ph="INSERT INTO tblAccessHistory... " />
+            <marker date="1581382958335" expanded="true" signature="676:723" ph="SELECT * FRO... tblZipSido" />
+            <marker date="1581382958335" expanded="true" signature="875:916" ph="SELECT * FRO... tblFaq" />
+            <marker date="1581382958335" expanded="true" signature="1240:1515" ph="SELECT `id`,... tblNotice" />
+            <marker date="1581382958335" expanded="true" signature="1612:1751" ph="SELECT `id`,... " />
+            <marker date="1581382958335" expanded="true" signature="1853:1901" ph="SELECT * FRO... tblIdentity" />
+            <marker date="1581382958335" expanded="true" signature="1991:2151" ph="SELECT *, (S... tblNotice" />
+            <marker date="1581382958335" expanded="true" signature="2270:2317" ph="SELECT `hit`... tblBoard" />
+            <marker date="1581382958335" expanded="true" signature="2388:2448" ph="UPDATE tblBo... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/public/classes/UserAuthRoute.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="398" column="0" lean-forward="true" selection-start-line="398" selection-start-column="0" selection-end-line="398" selection-end-column="0" />
+          <folding>
+            <marker date="1582014185148" expanded="true" signature="287:390" ph="SELECT * FRO... tblCustomer" />
+            <marker date="1582014185148" expanded="true" signature="626:691" ph="UPDATE tblCu... " />
+            <marker date="1582014185148" expanded="true" signature="1027:1083" ph="SELECT * FRO... tblCustomer" />
+            <marker date="1582014185148" expanded="true" signature="1133:1192" ph="UPDATE tblCu... " />
+            <marker date="1582014185148" expanded="true" signature="2025:2104" ph="SELECT * FRO... tblCustomer" />
+            <marker date="1582014185148" expanded="true" signature="2233:2425" ph="INSERT INTO tblCustomer... " />
+            <marker date="1582014185148" expanded="true" signature="3142:3204" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="3297:3355" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="3585:3643" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="3897:3965" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="4273:4345" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="4562:4619" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="4804:4862" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="5174:5237" ph="SELECT COUNT... tblLike" />
+            <marker date="1582014185148" expanded="true" signature="5447:5514" ph="DELETE FROM " />
+            <marker date="1582014185148" expanded="true" signature="5563:5626" ph="SELECT COUNT... tblLike" />
+            <marker date="1582014185148" expanded="true" signature="5899:6079" ph="INSERT INTO `app_midnight`.`tblFile`... " />
+            <marker date="1582014185148" expanded="true" signature="6320:6382" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="6575:6633" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="6819:6878" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="7064:7123" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="7312:7374" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="7498:7543" ph="SELECT * FRO... tblIdentity" />
+            <marker date="1582014185148" expanded="true" signature="7748:7810" ph="SELECT COUNT... tblUser" />
+            <marker date="1582014185148" expanded="true" signature="7965:8027" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="8362:8426" ph="SELECT COUNT... tblUser" />
+            <marker date="1582014185148" expanded="true" signature="8564:8715" ph="INSERT INTO tblUser... " />
+            <marker date="1582014185148" expanded="true" signature="8834:8881" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="8834:8912" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="8975:9040" ph="SELECT `id`,... tblUser" />
+            <marker date="1582014185148" expanded="true" signature="9217:9294" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="9357:10285" ph="SELECT *, (S... tblUser" />
+            <marker date="1582014185148" expanded="true" signature="9384:9437" ph="SELECT `path... tblFile" />
+            <marker date="1582014185148" expanded="true" signature="9472:9520" ph="SELECT `path... tblFile" />
+            <marker date="1582014185148" expanded="true" signature="9550:9608" ph="SELECT `desc... tblIdentity" />
+            <marker date="1582014185148" expanded="true" signature="9643:9704" ph="SELECT `abbr... tblZipSido" />
+            <marker date="1582014185148" expanded="true" signature="9735:9789" ph="SELECT COUNT... tblFollow" />
+            <marker date="1582014185148" expanded="true" signature="9822:9920" ph="SELECT COUNT... tblLike" />
+            <marker date="1582014185148" expanded="true" signature="9873:9919" ph="SELECT `id` tblBoard" />
+            <marker date="1582014185148" expanded="true" signature="9949:10007" ph="SELECT COUNT... tblBoard" />
+            <marker date="1582014185148" expanded="true" signature="10037:10114" ph="SELECT COUNT... tblFollow" />
+            <marker date="1582014185148" expanded="true" signature="10407:10477" ph="UPDATE tblUs... " />
+            <marker date="1582014185148" expanded="true" signature="10668:11588" ph="SELECT *, (S... tblUser" />
+            <marker date="1582014185148" expanded="true" signature="10695:10748" ph="SELECT `path... tblFile" />
+            <marker date="1582014185148" expanded="true" signature="10783:10831" ph="SELECT `path... tblFile" />
+            <marker date="1582014185148" expanded="true" signature="10861:10919" ph="SELECT `desc... tblIdentity" />
+            <marker date="1582014185148" expanded="true" signature="10954:11015" ph="SELECT `abbr... tblZipSido" />
+            <marker date="1582014185148" expanded="true" signature="11046:11100" ph="SELECT COUNT... tblFollow" />
+            <marker date="1582014185148" expanded="true" signature="11133:11231" ph="SELECT COUNT... tblLike" />
+            <marker date="1582014185148" expanded="true" signature="11184:11230" ph="SELECT `id` tblBoard" />
+            <marker date="1582014185148" expanded="true" signature="11260:11318" ph="SELECT COUNT... tblBoard" />
+            <marker date="1582014185148" expanded="true" signature="11348:11427" ph="SELECT COUNT... tblFollow" />
+            <marker date="1582014185148" expanded="true" signature="11752:12670" ph="SELECT *, (S... tblUser" />
+            <marker date="1582014185148" expanded="true" signature="11779:11832" ph="SELECT `path... tblFile" />
+            <marker date="1582014185148" expanded="true" signature="11867:11915" ph="SELECT `path... tblFile" />
+            <marker date="1582014185148" expanded="true" signature="11945:12003" ph="SELECT `desc... tblIdentity" />
+            <marker date="1582014185148" expanded="true" signature="12038:12099" ph="SELECT `abbr... tblZipSido" />
+            <marker date="1582014185148" expanded="true" signature="12130:12184" ph="SELECT COUNT... tblFollow" />
+            <marker date="1582014185148" expanded="true" signature="12217:12315" ph="SELECT COUNT... tblLike" />
+            <marker date="1582014185148" expanded="true" signature="12268:12314" ph="SELECT `id` tblBoard" />
+            <marker date="1582014185148" expanded="true" signature="12344:12402" ph="SELECT COUNT... tblBoard" />
+            <marker date="1582014185148" expanded="true" signature="12432:12509" ph="SELECT COUNT... tblFollow" />
+            <marker date="1582014185148" expanded="true" signature="12655:12670" ph="SELECT * FRO... tblUser" />
+            <marker date="1582014185148" expanded="true" signature="12969:13904" ph="SELECT *, (S... tblUser" />
+            <marker date="1582014185148" expanded="true" signature="12996:13049" ph="SELECT `path... tblFile" />
+            <marker date="1582014185148" expanded="true" signature="13084:13132" ph="SELECT `path... tblFile" />
+            <marker date="1582014185148" expanded="true" signature="13162:13220" ph="SELECT `desc... tblIdentity" />
+            <marker date="1582014185148" expanded="true" signature="13255:13316" ph="SELECT `abbr... tblZipSido" />
+            <marker date="1582014185148" expanded="true" signature="13347:13401" ph="SELECT COUNT... tblFollow" />
+            <marker date="1582014185148" expanded="true" signature="13434:13532" ph="SELECT COUNT... tblLike" />
+            <marker date="1582014185148" expanded="true" signature="13485:13531" ph="SELECT `id` tblBoard" />
+            <marker date="1582014185148" expanded="true" signature="13561:13619" ph="SELECT COUNT... tblBoard" />
+            <marker date="1582014185148" expanded="true" signature="13649:13720" ph="SELECT COUNT... tblFollow" />
+            <marker date="1582014185148" expanded="true" signature="13649:13726" ph="SELECT COUNT... tblFollow" />
+            <marker date="1582014185148" expanded="true" signature="14245:15432" ph="SELECT *, (6... " />
+            <marker date="1582014185148" expanded="true" signature="14245:15436" ph="SELECT *, (S... " />
+            <marker date="1582014185148" expanded="true" signature="14272:14325" ph="SELECT `path... tblFile" />
+            <marker date="1582014185148" expanded="true" signature="14360:14408" ph="SELECT `path... tblFile" />
+            <marker date="1582014185148" expanded="true" signature="14438:14496" ph="SELECT `desc... tblIdentity" />
+            <marker date="1582014185148" expanded="true" signature="14531:14592" ph="SELECT `abbr... tblZipSido" />
+            <marker date="1582014185148" expanded="true" signature="14623:14677" ph="SELECT COUNT... tblFollow" />
+            <marker date="1582014185148" expanded="true" signature="14710:14808" ph="SELECT COUNT... tblLike" />
+            <marker date="1582014185148" expanded="true" signature="14761:14807" ph="SELECT `id` tblBoard" />
+            <marker date="1582014185148" expanded="true" signature="14837:14895" ph="SELECT COUNT... tblBoard" />
+            <marker date="1582014185148" expanded="true" signature="14925:15002" ph="SELECT COUNT... tblFollow" />
+            <marker date="1582014185148" expanded="true" signature="15834:16930" ph="SELECT *, (S... " />
+            <marker date="1582014185148" expanded="true" signature="15834:16937" ph="SELECT *, (S... " />
+            <marker date="1582014185148" expanded="true" signature="15834:16945" ph="SELECT *, (S... " />
+            <marker date="1582014185148" expanded="true" signature="15861:15914" ph="SELECT `path... tblFile" />
+            <marker date="1582014185148" expanded="true" signature="15949:15997" ph="SELECT `path... tblFile" />
+            <marker date="1582014185148" expanded="true" signature="16027:16085" ph="SELECT `desc... tblIdentity" />
+            <marker date="1582014185148" expanded="true" signature="16120:16181" ph="SELECT `abbr... tblZipSido" />
+            <marker date="1582014185148" expanded="true" signature="16212:16266" ph="SELECT COUNT... tblFollow" />
+            <marker date="1582014185148" expanded="true" signature="16299:16397" ph="SELECT COUNT... tblLike" />
+            <marker date="1582014185148" expanded="true" signature="16350:16396" ph="SELECT `id` tblBoard" />
+            <marker date="1582014185148" expanded="true" signature="16426:16484" ph="SELECT COUNT... tblBoard" />
+            <marker date="1582014185148" expanded="true" signature="16514:16591" ph="SELECT COUNT... tblFollow" />
+            <marker date="1582014185148" expanded="true" signature="17347:18447" ph="SELECT *, (S... " />
+            <marker date="1582014185148" expanded="true" signature="17347:18454" ph="SELECT *, (S... " />
+            <marker date="1582014185148" expanded="true" signature="17347:18462" ph="SELECT *, (S... " />
+            <marker date="1582014185148" expanded="true" signature="17374:17427" ph="SELECT `path... tblFile" />
+            <marker date="1582014185148" expanded="true" signature="17462:17510" ph="SELECT `path... tblFile" />
+            <marker date="1582014185148" expanded="true" signature="17540:17598" ph="SELECT `desc... tblIdentity" />
+            <marker date="1582014185148" expanded="true" signature="17633:17694" ph="SELECT `abbr... tblZipSido" />
+            <marker date="1582014185148" expanded="true" signature="17725:17779" ph="SELECT COUNT... tblFollow" />
+            <marker date="1582014185148" expanded="true" signature="17812:17910" ph="SELECT COUNT... tblLike" />
+            <marker date="1582014185148" expanded="true" signature="17863:17909" ph="SELECT `id` tblBoard" />
+            <marker date="1582014185148" expanded="true" signature="17939:17997" ph="SELECT COUNT... tblBoard" />
+            <marker date="1582014185148" expanded="true" signature="18027:18104" ph="SELECT COUNT... tblFollow" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/public/classes/BoardRoute.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="40" lean-forward="true" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding>
+            <marker date="1582009802971" expanded="true" signature="249:318" ph="INSERT INTO tblLike... " />
+            <marker date="1582009802971" expanded="true" signature="367:425" ph="SELECT COUNT... tblLike" />
+            <marker date="1582009802971" expanded="true" signature="641:703" ph="DELETE FROM " />
+            <marker date="1582009802971" expanded="true" signature="652:703" ph="INSERT INTO tblLike... " />
+            <marker date="1582009802971" expanded="true" signature="752:810" ph="SELECT COUNT... tblLike" />
+            <marker date="1582009802971" expanded="true" signature="979:997" ph="SELECT * FRO... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="979:1013" ph="SELECT * FRO... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="1074:1112" ph="SELECT * FRO... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="1074:1135" ph="SELECT * FRO... tblFile" />
+            <marker date="1582009802971" expanded="true" signature="1074:1138" ph="SELECT * FRO... tblFile" />
+            <marker date="1582009802971" expanded="true" signature="1416:2010" ph="SELECT B.*, tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="2066:2130" ph="SELECT * FRO... tblFile" />
+            <marker date="1582009802971" expanded="true" signature="2549:2621" ph="SELECT COUNT... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="2731:3337" ph="SELECT B.*, tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="2731:3344" ph="SELECT B.*, tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="2731:3386" ph="SELECT B.*, tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="2731:3394" ph="SELECT B.*, tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="2731:3396" ph="SELECT B.*, tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="2731:3403" ph="SELECT B.*, tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="3512:3588" ph="SELECT * FRO... tblFile" />
+            <marker date="1582009802971" expanded="true" signature="4139:4192" ph="SELECT COUNT... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="4139:4219" ph="SELECT COUNT... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="4329:5004" ph="SELECT B.*, tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="5120:5196" ph="SELECT * FRO... tblFile" />
+            <marker date="1582009802971" expanded="true" signature="5698:5770" ph="SELECT * FRO... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="5880:5916" ph="SELECT * FRO... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="5880:5964" ph="SELECT * FRO... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="5880:5972" ph="SELECT * FRO... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="5880:5974" ph="SELECT * FRO... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="5880:5981" ph="SELECT * FRO... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="6090:6128" ph="SELECT * FRO... tblFile" />
+            <marker date="1582009802971" expanded="true" signature="6090:6166" ph="SELECT * FRO... tblFile" />
+            <marker date="1582009802971" expanded="true" signature="6793:6865" ph="SELECT COUNT... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="7104:7385" ph="SELECT *, (6... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="7510:7586" ph="SELECT * FRO... tblFile" />
+            <marker date="1582009802971" expanded="true" signature="7922:8001" ph="SELECT * FRO... tblBoard" />
+            <marker date="1582009802971" expanded="true" signature="8256:8309" ph="UPDATE tblUs... " />
+            <marker date="1582009802971" expanded="true" signature="8358:8399" ph="DELETE FROM " />
+            <marker date="1582009802971" expanded="true" signature="9191:9679" ph="INSERT INTO `app_midnight`.`tblBoard`... " />
+            <marker date="1582009802971" expanded="true" signature="9895:10087" ph="INSERT INTO `app_midnight`.`tblFile`... " />
+            <marker date="1582009802971" expanded="true" signature="10240:10277" ph="SELECT `abbr... tblZipSido" />
+            <marker date="1582009802971" expanded="true" signature="10240:10304" ph="SELECT `abbr... tblZipSido" />
+            <marker date="1582009802971" expanded="true" signature="10917:10969" ph="SELECT pushT... tblUser" />
+            <marker date="1582009802971" expanded="true" signature="10917:10997" ph="SELECT pushT... tblUser" />
+            <marker date="1582009802971" expanded="true" signature="11021:11050" ph="SELECT pushT... tblUser" />
+            <marker date="1582009802971" expanded="true" signature="11021:11080" ph="SELECT pushT... tblUser" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
