@@ -1,10 +1,10 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 include_once $_SERVER["DOCUMENT_ROOT"]."/midnight/shared/public/classes/FileRoute.php";
 
 class UserAuthRoute extends FileRoute {
 
-    function requestLogin(){
+    public function requestLogin(){
         $email = $_REQUEST["email"];
         $pwd = $this->encryptAES256($_REQUEST["pwd"]);
 
@@ -23,7 +23,7 @@ class UserAuthRoute extends FileRoute {
         }
     }
 
-    function authMail(){
+    public function authMail(): array{
         $email = $this->decryptAES256($_REQUEST["authCode"]);
         $val = $this->getRow("SELECT * FROM tblUser WHERE email='{$email}' LIMIT 1");
         if($val != null){
@@ -43,11 +43,11 @@ class UserAuthRoute extends FileRoute {
         return $retVal;
     }
 
-    function getUserByReq(){
+    public function getUserByReq(){
         return $this->getUser($_REQUEST["id"]);
     }
 
-    function joinUser(){
+    public function joinUser(){
         $email = $_REQUEST["email"];
         $pwd = $this->encryptAES256($_REQUEST["pwd"]);
         $nickname = $_REQUEST["nickname"];
