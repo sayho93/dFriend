@@ -12,6 +12,8 @@ if(!class_exists("Configs")) {
         var $CONFIG;
         var $CONFIG_MODE;
         var $PF_FILE_PATH;
+        var $PF_FILE_TEMP_PATH;
+        var $PF_FILE_TEMP_SHORT;
         var $PF_FILE_DISPLAY_PATH;
         var $PF_FILE_PATH_720;
         var $PF_FILE_PATH_640;
@@ -29,6 +31,7 @@ if(!class_exists("Configs")) {
         }
 
 		function init(){
+            $DOCUMENT_ROOT = $_SERVER["DOCUMENT_ROOT"];
             /**
              * Variables which can be changed by developers and environments
              * @changeable true
@@ -40,6 +43,8 @@ if(!class_exists("Configs")) {
                      * File Paths for DEV MODE
                      */
                     URL_PATH => PF_DEFAULT,
+                    URL_PATH_TEMP => $DOCUMENT_ROOT."midnight/tempFiles",
+                    PF_FILE_TEMP_SHORT => "/midnight/tempFiles",
                     URL_DISPLAY_PATH => PF_DEFAULT,
                     URL_PATH_100 => PF_DEFAULT,
                     URL_PATH_320 => PF_DEFAULT,
@@ -104,6 +109,8 @@ if(!class_exists("Configs")) {
              */
             $this->PF_FILE_PATH = $this->CONFIG[$this->CONFIG_MODE][URL_PATH];
             $this->PF_FILE_DISPLAY_PATH = $this->CONFIG[$this->CONFIG_MODE][URL_DISPLAY_PATH];
+            $this->PF_FILE_TEMP_PATH = $this->CONFIG[$this->CONFIG_MODE][URL_PATH_TEMP];
+            $this->PF_FILE_TEMP_SHORT = $this->CONFIG[$this->CONFIG_MODE][PF_FILE_TEMP_SHORT];
             $this->PF_FILE_PATH_720 = $this->CONFIG[$this->CONFIG_MODE][URL_PATH_720];
             $this->PF_FILE_PATH_640 = $this->CONFIG[$this->CONFIG_MODE][URL_PATH_640];
             $this->PF_FILE_PATH_480 = $this->CONFIG[$this->CONFIG_MODE][URL_PATH_480];

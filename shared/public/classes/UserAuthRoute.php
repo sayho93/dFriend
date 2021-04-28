@@ -1,8 +1,8 @@
 <?php
 
-include_once $_SERVER["DOCUMENT_ROOT"]."/midnight/shared/public/classes/Routable.php";
+include_once $_SERVER["DOCUMENT_ROOT"]."/midnight/shared/public/classes/FileRoute.php";
 
-class UserAuthRoute extends Routable {
+class UserAuthRoute extends FileRoute {
 
     function requestLogin(){
         $email = $_REQUEST["email"];
@@ -25,9 +25,9 @@ class UserAuthRoute extends Routable {
 
     function authMail(){
         $email = $this->decryptAES256($_REQUEST["authCode"]);
-        $val = $this->getRow("SELECT * FROM tblCustomer WHERE email='{$email}' LIMIT 1");
+        $val = $this->getRow("SELECT * FROM tblUser WHERE email='{$email}' LIMIT 1");
         if($val != null){
-            $upt = "UPDATE tblCustomer SET `status`=1 WHERE `id`='{$val["id"]}'";
+            $upt = "UPDATE tblUser SET `status`=1 WHERE `id`='{$val["id"]}'";
             $this->update($upt);
             $retVal = array(
                 "redirect" => true,
@@ -58,36 +58,71 @@ class UserAuthRoute extends Routable {
             case "dgu.ac.kr":
                 break;
             default:
-                return Routable::response(-1, "대학교 이메일을 사용해 주세요");
+                return Routable::response(3, "대학교 이메일을 사용해 주세요");
         }
 
         $val = $this->getRow("SELECT * FROM tblUser WHERE email='{$email}' AND email != 'Unknown' LIMIT 1");
         if($val != null){
             return Routable::response(2, "이미 존재하는 이메일 계정입니다.");
         }else{
-            $ins = "INSERT INTO tblUser(email, `account`, `password`, `nickname`, regDate)
-                    VALUES ('{$email}', '{$email}', '{$pwd}', '{$nickname}', NOW())";
+            $ins = "INSERT INTO tblUser(email, `account`, `password`, `nickname`, `status`, regDate)
+                    VALUES ('{$email}', '{$email}', '{$pwd}', '{$nickname}', 2, NOW())";
             $this->update($ins);
             $link = "http://".$_SERVER["HTTP_HOST"]."/midnight/shared/public/route.php?F=UserAuthRoute.authMail&authCode=".urlencode($this->encryptAES256($email));
             $sender = new EmailSender();
             $sender->sendMailTo(
                 "피클코드 인증 메일입니다.",
                 "아래 링크를 클릭하여 인증을 완료해주세요.<br/><a href='$link'>인증 링크</a><br/>본 서비스를 신청하지 않으셨다면 즉시 본 이메일로 회신바랍니다.",
-                $email, $name
+                $email, $nickname
                 );
             return Routable::response(1, "가입 처리가 완료되었습니다.\n입력하신 이메일로 인증 링크가 발송되었습니다.");
         }
     }
 
-    function test(){
-        $link = "http://".$_SERVER["HTTP_HOST"]."/midnight/shared/public/route.php?F=UserAuthRoute.authMail&authCode=".urlencode($this->encryptAES256("fishcreek@naver.com"));
-        $sender = new EmailSender();
-        $sender->sendMailTo(
-            "피클코드 인증 메일입니다.",
-            "아래 링크를 클릭하여 인증을 완료해주세요.<br/><a href='$link'>인증 링크</a><br/>본 서비스를 신청하지 않으셨다면 즉시 본 이메일로 회신바랍니다.",
-            "ellivga@dongguk.edu", "test"
-        );
-        return Routable::response(1, "가입 처리가 완료되었습니다.\n입력하신 이메일로 인증 링크가 발송되었습니다.");
+    function setUserDetails(){
+        $userId = $_REQUEST['userId'];
+        $sex = $_REQUEST["sex"];
+        $age = $_REQUEST["age"];
+        $desc = $_REQUEST["desc"];
+        $img = $_FILES["img"];
+
+        if($img["tmp_name"][0] != ""){
+            $tmp = $this->procFiles($img, $userId);
+//            echo count($img["name"]);
+            foreach($img["name"] as $item){
+                $fileId = $tmp[$item]["id"];
+//                echo $fileId;
+            }
+        }
+
+        if($sex === "" || $age === "" || $desc === "")
+            return Routable::response(-1, "정보를 모두 기입해 주세요");
+
+        $ins = "
+            UPDATE tblUser
+            SET 
+                `identity` = '{$sex}',
+                `age` = '{$age}',
+                `desc` = '{$desc}'
+            WHERE id = '{$userId}'
+        ";
+        $this->update($ins);
+        return Routable::response(1, "succ");
+    }
+
+    /**
+     * @throws Exception
+     */
+    function setUserCharacter(){
+        $userId = $_REQUEST['userId'];
+        $charList = $_REQUEST['charList'];
+        $ins = "DELETE FROM tblCharMap WHERE userId = '{$userId}'";
+        $this->update($ins);
+        foreach($charList as $item){
+            $ins = "INSERT INTO tblCharMap(`userId`, `characterId`) VALUES ({$userId}, {$item})";
+            $this->update($ins);
+        }
+        return Routable::response(1, "가입되었습니다");
     }
 
     function setLocation(){

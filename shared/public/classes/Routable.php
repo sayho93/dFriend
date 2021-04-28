@@ -7,7 +7,8 @@ class Routable extends Databases {
 
     public static function response($returnCode, $returnMessage = "", $data = ""){
         $retVal = array("returnCode" => $returnCode, "returnMessage" => $returnMessage, "data" => $data);
-        return json_encode($retVal);
+//        return json_encode($retVal);
+        return $retVal;
     }
 
     function sendPushReq(){

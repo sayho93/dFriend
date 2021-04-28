@@ -9,7 +9,7 @@ class EmailSender {
     protected $port = 465;
     protected $mailer = "smtp";
 
-    function EmailSender(){
+    public function __construct(){
         $this->init();
     }
 
@@ -26,6 +26,7 @@ class EmailSender {
         $this->mailInfo->IsHTML(true);
         $this->setAccount($this->userEmail, $this->password);
         $this->setSendEmail($this->userEmail, $this->userName);
+//        $this->mailInfo->SMTPDebug = 2;
     }
 
     function setAccount($email, $pass){

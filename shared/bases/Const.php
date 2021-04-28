@@ -23,6 +23,8 @@ define("ROUTE_PARAMETER_UPPER", "F");
 // Config Variable Key
 define("URL_DISPLAY_PATH", "URL_DISPLAY_PATH");
 define("URL_PATH", "URL_PATH");
+define("URL_PATH_TEMP", "URL_PATH_TEMP");
+define("PF_FILE_TEMP_SHORT", "PF_FILE_TEMP_SHORT");
 define("URL_PATH_720", "URL_PATH_720");
 define("URL_PATH_640", "URL_PATH_640");
 define("URL_PATH_480", "URL_PATH_480");
