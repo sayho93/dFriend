@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e50db211-c88b-41ae-bb74-2e890a343a6e" name="Default" comment="config modified &amp; user join precess added">
+    <list default="true" id="e50db211-c88b-41ae-bb74-2e890a343a6e" name="Default" comment="login modified &amp; character list api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/public/classes/UserAuthRoute.php" beforeDir="false" afterPath="$PROJECT_DIR$/shared/public/classes/UserAuthRoute.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/public/classes/WebRoute.php" beforeDir="false" afterPath="$PROJECT_DIR$/shared/public/classes/WebRoute.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -298,7 +296,7 @@
       <workItem from="1581147244513" duration="11327000" />
       <workItem from="1581303484941" duration="46539000" />
       <workItem from="1581993697403" duration="6394000" />
-      <workItem from="1619612675803" duration="14151000" />
+      <workItem from="1619612675803" duration="14329000" />
     </task>
     <task id="LOCAL-00001" summary="config modified &amp; user join precess added">
       <created>1619625812889</created>
@@ -307,7 +305,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619625812889</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="login modified &amp; character list api">
+      <created>1619627145356</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1619627145356</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -351,7 +356,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="config modified &amp; user join precess added" />
-    <option name="LAST_COMMIT_MESSAGE" value="config modified &amp; user join precess added" />
+    <MESSAGE value="login modified &amp; character list api" />
+    <option name="LAST_COMMIT_MESSAGE" value="login modified &amp; character list api" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/Desktop/프로젝트/BibleTime/web_backup/pages/supportDetail.php">
