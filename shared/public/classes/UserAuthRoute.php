@@ -75,7 +75,9 @@ class UserAuthRoute extends FileRoute {
                 "아래 링크를 클릭하여 인증을 완료해주세요.<br/><a href='$link'>인증 링크</a><br/>본 서비스를 신청하지 않으셨다면 즉시 본 이메일로 회신바랍니다.",
                 $email, $nickname
                 );
-            return Routable::response(1, "가입 처리가 완료되었습니다.\n입력하신 이메일로 인증 링크가 발송되었습니다.");
+            $id = $this->mysql_insert_id();
+            $userInfo = $this->getRow("SELECT * FROM tblUser WHERE id = '{$id}'");
+            return Routable::response(1, "가입 처리가 완료되었습니다.\n입력하신 이메일로 인증 링크가 발송되었습니다.", $userInfo);
         }
     }
 
@@ -86,24 +88,28 @@ class UserAuthRoute extends FileRoute {
         $desc = $_REQUEST["desc"];
         $img = $_FILES["img"];
 
+        $thumbId = 0;
         if($img["tmp_name"][0] != ""){
             $tmp = $this->procFiles($img, $userId);
 //            echo count($img["name"]);
+            $idx = 0;
             foreach($img["name"] as $item){
+                if(idx == 0) $thumbId = $tmp[$item]["id"];
                 $fileId = $tmp[$item]["id"];
 //                echo $fileId;
+                $idx++;
             }
         }
 
-        if($sex === "" || $age === "" || $desc === "")
-            return Routable::response(-1, "정보를 모두 기입해 주세요");
+        if($sex === "" || $age === "" || $desc === "") return Routable::response(-1, "정보를 모두 기입해 주세요");
 
         $ins = "
             UPDATE tblUser
             SET 
                 `identity` = '{$sex}',
                 `age` = '{$age}',
-                `desc` = '{$desc}'
+                `desc` = '{$desc}',
+                `profileId` = '{$thumbId}'
             WHERE id = '{$userId}'
         ";
         $this->update($ins);
@@ -126,6 +132,12 @@ class UserAuthRoute extends FileRoute {
             $this->update($ins);
         }
         return Routable::response(1, "가입되었습니다");
+    }
+
+    function revertJoin(){
+        $id = $_REQUEST["id"];
+        $ins = "DELETE FROM tblUser WHERE id = '{$id}'";
+        return Routable::response(1, "succ");
     }
 
     function setLocation(){

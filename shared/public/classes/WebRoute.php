@@ -32,5 +32,32 @@ class WebRoute extends Routable {
         return $this->getArray("SELECT * FROM tblCharacter");
     }
 
+    function getRecomUser(){
+        $id = $_REQUEST["id"];
+
+        $ins = "
+            SELECT *
+            FROM tblUser U JOIN (
+                SELECT
+                    id,
+                    (SELECT COUNT(*) FROM tblCharMap WHERE userId = id AND characterId IN (SELECT characterId FROM tblCharMap WHERE userId = '39')) AS matchCnt,(
+                        SELECT GROUP_CONCAT(description separator ',') 
+                        FROM tblCharMap CM JOIN tblCharacter C on characterId = C.id 
+                        WHERE CM.userId = IU.id AND characterId IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')
+                    ) AS matchDesc,(
+                        SELECT GROUP_CONCAT(description separator ',') 
+                        FROM tblCharMap CM JOIN tblCharacter C on characterId = C.id 
+                        WHERE CM.userId = IU.id AND characterId NOT IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')
+                    ) AS nonMatchDesc
+                FROM tblUser IU
+                ORDER BY RAND()
+            ) as tmp
+            ON U.id = tmp.id
+            WHERE U.id != '{$id}'
+            ORDER BY matchCnt DESC
+            LIMIT 10;
+        ";
+        return Routable::response(1, "succ", $this->getArray($ins));
+    }
 
 }
