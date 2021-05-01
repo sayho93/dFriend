@@ -359,13 +359,13 @@ class UserAuthRoute extends FileRoute {
         $slt = "SELECT *,
                 (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
                 (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
-                (SELECT `desc` FROM tblIdentity I WHERE U.`identity`=I.`id`) AS strIdentity,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
                 (SELECT COUNT(*) FROM tblBoard B WHERE B.`userKey` = U.`id`) AS boards,
                 (SELECT COUNT(*) > 0 FROM tblFollow WHERE userId='{$id}' AND followedId=U.`id`) AS followingYou,
-                IFNULL(ROUND((TO_DAYS(NOW()) - (TO_DAYS(birth))) / 365), 0) AS age
+                (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = '{$id}') AS characteristics,
+                (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS characteristicStr
                 FROM tblUser U WHERE U.`account`='{$account}' LIMIT 1";
         $ret = $this->getRow($slt);
 
@@ -383,13 +383,13 @@ class UserAuthRoute extends FileRoute {
         $slt = "SELECT *,
                 (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
                 (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
-                (SELECT `desc` FROM tblIdentity I WHERE U.`identity`=I.`id`) AS strIdentity,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
                 (SELECT COUNT(*) FROM tblBoard B WHERE B.`userKey` = U.`id`) AS boards,
                 (SELECT COUNT(*) > 0 FROM tblFollow WHERE userId='{$myId}' AND followedId=U.`id`) AS followingYou,
-                IFNULL(ROUND((TO_DAYS(NOW()) - (TO_DAYS(birth))) / 365), 0) AS age
+                (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = '{$id}') AS characteristics,
+                (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS characteristicStr
                 FROM tblUser U WHERE U.`id`='{$id}' LIMIT 1";
         $ret = $this->getRow($slt);
 
@@ -401,13 +401,13 @@ class UserAuthRoute extends FileRoute {
         $slt = "SELECT *,
                 (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
                 (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
-                (SELECT `desc` FROM tblIdentity I WHERE U.`identity`=I.`id`) AS strIdentity,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
                 (SELECT COUNT(*) FROM tblBoard B WHERE B.`userKey` = U.`id`) AS boards,
                 (SELECT COUNT(*) > 0 FROM tblFollow WHERE userId='{$id}' AND followedId=U.`id`) AS followingYou,
-                IFNULL(ROUND((TO_DAYS(NOW()) - (TO_DAYS(birth))) / 365), 0) AS age
+                (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = '{$id}') AS characteristics,
+                (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS characteristicStr
                 FROM tblUser U WHERE U.`id`='{$id}' LIMIT 1";
         $ret = $this->getRow($slt);
 

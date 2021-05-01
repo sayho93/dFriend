@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 include_once $_SERVER["DOCUMENT_ROOT"]."/midnight/shared/public/classes/Routable.php";
 
