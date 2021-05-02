@@ -81,6 +81,17 @@ class UserAuthRoute extends FileRoute {
         }
     }
 
+    function test(){
+        $email = "fishcreek@naver.com";
+        $link = "http://".$_SERVER["HTTP_HOST"]."/midnight/shared/public/route.php?F=UserAuthRoute.authMail&authCode=".urlencode($this->encryptAES256($email));
+        $sender = new EmailSender();
+        $sender->sendMailTo(
+            "피클코드 인증 메일입니다.",
+            "아래 링크를 클릭하여 인증을 완료해주세요.<br/><a href='$link'>인증 링크</a><br/>본 서비스를 신청하지 않으셨다면 즉시 본 이메일로 회신바랍니다.",
+            $email, "asdf"
+        );
+    }
+
     function setUserDetails(){
         $userId = $_REQUEST['userId'];
         $sex = $_REQUEST["sex"];
