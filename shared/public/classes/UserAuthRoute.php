@@ -310,12 +310,12 @@ class UserAuthRoute extends FileRoute {
         return self::response(1, "");
     }
 
-    function getIdentities(){
-        $slt = "SELECT * FROM tblIdentity ORDER BY `desc` ASC";
-        $ret = $this->getArray($slt);
-
-        return self::response(1, "", $ret);
-    }
+//    function getIdentities(){
+//        $slt = "SELECT * FROM tblIdentity ORDER BY `desc` ASC";
+//        $ret = $this->getArray($slt);
+//
+//        return self::response(1, "", $ret);
+//    }
 
     function setNickname(){
         $id = $_REQUEST["id"];
@@ -436,7 +436,6 @@ class UserAuthRoute extends FileRoute {
         $slt = "SELECT *,
                 (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
                 (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
-                (SELECT `desc` FROM tblIdentity I WHERE U.`identity`=I.`id`) AS strIdentity,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
@@ -458,7 +457,6 @@ class UserAuthRoute extends FileRoute {
         $slt = "SELECT *,
                 (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
                 (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
-                (SELECT `desc` FROM tblIdentity I WHERE U.`identity`=I.`id`) AS strIdentity,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
@@ -484,7 +482,6 @@ class UserAuthRoute extends FileRoute {
         $slt = "SELECT *,
                 (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
                 (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
-                (SELECT `desc` FROM tblIdentity I WHERE U.`identity`=I.`id`) AS strIdentity,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
@@ -510,7 +507,6 @@ class UserAuthRoute extends FileRoute {
         $slt = "SELECT *,
                 (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
                 (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
-                (SELECT `desc` FROM tblIdentity I WHERE U.`identity`=I.`id`) AS strIdentity,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,

@@ -15,10 +15,10 @@ class WebRoute extends Routable {
         return $this->getArray("SELECT * FROM tblFaq ORDER BY `title` ASC");
     }
 
-    function getIdentityList(){
-        $slt = "SELECT * FROM tblIdentity ORDER BY className ASC";
-        return $this->getArray($slt);
-    }
+//    function getIdentityList(){
+//        $slt = "SELECT * FROM tblIdentity ORDER BY className ASC";
+//        return $this->getArray($slt);
+//    }
 
     function updateHit(){
         $id = $_REQUEST["id"];
