@@ -47,7 +47,7 @@ class UserAuthRoute extends FileRoute {
         return $this->getUser($_REQUEST["id"]);
     }
 
-    public function joinUser(){
+    function joinUser(){
         $email = $_REQUEST["email"];
         $pwd = $this->encryptAES256($_REQUEST["pwd"]);
         $nickname = $_REQUEST["nickname"];
@@ -61,7 +61,7 @@ class UserAuthRoute extends FileRoute {
                 return Routable::response(3, "대학교 이메일을 사용해 주세요");
         }
 
-        $val = $this->getRow("SELECT * FROM tblUser WHERE email='{$email}' AND email != 'Unknown' LIMIT 1");
+        $val = $this->getRow("SELECT * FROM tblUser WHERE email='{$email}' AND status != 0 LIMIT 1");
         if($val != null){
             return Routable::response(2, "이미 존재하는 이메일 계정입니다.");
         }else{
@@ -77,8 +77,15 @@ class UserAuthRoute extends FileRoute {
                 );
             $id = $this->mysql_insert_id();
             $userInfo = $this->getRow("SELECT * FROM tblUser WHERE id = '{$id}'");
-            return Routable::response(1, "가입 처리가 완료되었습니다.\n입력하신 이메일로 인증 링크가 발송되었습니다.", $userInfo);
+            return Routable::response(1, "입력하신 이메일로 인증 링크가 발송되었습니다.", $userInfo);
         }
+    }
+
+    public function checkNick(){
+        $nick = $_REQUEST["nick"];
+        $cnt = $this->getValue("SELECT COUNT(*) as cnt FROM tblUser WHERE nickname = '{$nick}' LIMIT 1", "cnt");
+        if($cnt > 0) return Routable::response(-1, "이미 해당 닉네임을 사용하는 유저가 있습니다.");
+        else return Routable::response(1, "사용가능한 닉네임입니다.");
     }
 
     function test(){
@@ -147,6 +154,8 @@ class UserAuthRoute extends FileRoute {
 
     function revertJoin(){
         $id = $_REQUEST["id"];
+        $cnt = $this->getValue("SELECT COUNT(*) as cnt FROM tblUser WHERE id = '{$id}'", "cnt");
+        if($cnt > 0) return Routable::response(-1, "없는 유저입니다.");
         $ins = "DELETE FROM tblUser WHERE id = '{$id}'";
         return Routable::response(1, "succ");
     }
