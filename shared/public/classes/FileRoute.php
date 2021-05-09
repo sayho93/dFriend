@@ -15,47 +15,79 @@ class FileRoute extends Routable {
         $fileInfo = array();
         $fileIds = array();
 
-        for($e = 0, $eMax = count($file["name"]); $e < $eMax; $e++){
-            $tmp_name = $file["tmp_name"][$e];
-            $rawName = basename($file["name"][$e]);
-            $ext = pathinfo($rawName,PATHINFO_EXTENSION);
+        if(!is_array($file["name"])){
+            $tmp_name = $file["tmp_name"];
+            $rawName = basename($file["name"]);
+            $ext = pathinfo($rawName, PATHINFO_EXTENSION);
+            $size = $file["size"];
 
-            if($tmp_name == ""){
-                break;
-            }
-            // Ext check
-            $size = $file["size"][$e];
+            $res = $this->procDir($tmp_name);
+            $short = $res["short"];
+            $targetPath = $res["targetPath"];
+            $tmp_name = $res["tmp_name"];
 
-            $targetDir = $this->PF_FILE_TEMP_PATH;
-            $shortTargetDir = $this->PF_FILE_TEMP_SHORT;
-            if(!self::createDir($targetDir)){
-                return self::response(-99, "파일 처리 중 경로 오류가 발생하였습니다.");
-            }
-            $fName = $this->makeFileName();
-            $targetPath = $targetDir."/".$fName;
-            $short = $shortTargetDir."/".$fName;
-            $movedFlag = move_uploaded_file($tmp_name, $targetPath);
-            if($movedFlag){
-                $tmp_name = $targetPath;
-            }else{
-                return self::response(-98, "파일 처리 중 오류가 발생하였습니다.", $movedFlag);
-            }
-
-            $fileId = $this->applyUploadedData($rawName, $tmp_name, $ext, $userKey, $short, $size, $e);
+            $fileId = $this->applyUploadedData($rawName, $tmp_name, $ext, $userKey, $short, $size);
 
             $mime = mime_content_type($targetPath);
             // Cannot cover the situation with File Name Conflict
-            $fileIds[$e] = $fileId;
-            $fileInfo[$file["name"][$e]]["id"] = $fileId;
-            $fileInfo[$file["name"][$e]]["name"] = $rawName;
-            $fileInfo[$file["name"][$e]]["size"] = filesize($targetPath);
-            $fileInfo[$file["name"][$e]]["path"] = $targetPath;
-            $fileInfo[$e]["data"] = 'data:'.$mime.';base64,'.base64_encode(file_get_contents($targetPath));
+            $fileIds = $fileId;
+            $fileInfo[$file["name"]]["id"] = $fileId;
+            $fileInfo[$file["name"]]["name"] = $rawName;
+            $fileInfo[$file["name"]]["size"] = filesize($targetPath);
+            $fileInfo[$file["name"]]["path"] = $targetPath;
+            $fileInfo["data"] = 'data:'.$mime.';base64,'.base64_encode(file_get_contents($targetPath));
+        }else{
+            for($e = 0, $eMax = count($file["name"]); $e < $eMax; $e++){
+                $tmp_name = $file["tmp_name"][$e];
+                $rawName = basename($file["name"][$e]);
+                $ext = pathinfo($rawName,PATHINFO_EXTENSION);
+
+                if($tmp_name == ""){
+                    break;
+                }
+                // Ext check
+                $size = $file["size"][$e];
+
+                $res = $this->procDir($tmp_name);
+                $short = $res["short"];
+                $targetPath = $res["targetPath"];
+                $tmp_name = $res["tmp_name"];
+
+                $fileId = $this->applyUploadedData($rawName, $tmp_name, $ext, $userKey, $short, $size, $e);
+
+                $mime = mime_content_type($targetPath);
+                // Cannot cover the situation with File Name Conflict
+                $fileIds[$e] = $fileId;
+                $fileInfo[$file["name"][$e]]["id"] = $fileId;
+                $fileInfo[$file["name"][$e]]["name"] = $rawName;
+                $fileInfo[$file["name"][$e]]["size"] = filesize($targetPath);
+                $fileInfo[$file["name"][$e]]["path"] = $targetPath;
+                $fileInfo[$e]["data"] = 'data:'.$mime.';base64,'.base64_encode(file_get_contents($targetPath));
+            }
         }
 
         $this->updateBoardIds($boardId, $fileIds);
 
         return $fileInfo;
+    }
+
+    function procDir($tmp_name){
+        $targetDir = $this->PF_FILE_TEMP_PATH;
+        $shortTargetDir = $this->PF_FILE_TEMP_SHORT;
+        if(!self::createDir($targetDir)){
+            return self::response(-99, "파일 처리 중 경로 오류가 발생하였습니다.");
+            }
+
+        $fName = $this->makeFileName();
+        $targetPath = $targetDir."/".$fName;
+        $short = $shortTargetDir."/".$fName;
+        $movedFlag = move_uploaded_file($tmp_name, $targetPath);
+        if($movedFlag){
+            $tmp_name = $targetPath;
+        }else{
+            return self::response(-98, "파일 처리 중 오류가 발생하였습니다.", $movedFlag);
+        }
+        return array("targetPath" => $targetPath, "tmp_name" => $tmp_name, "short" => $short);
     }
 
     function procFilesUnbound(){

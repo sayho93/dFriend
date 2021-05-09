@@ -1,8 +1,17 @@
 <?php
 
-include_once $_SERVER["DOCUMENT_ROOT"]."/midnight/shared/public/classes/Routable.php";
+include_once $_SERVER["DOCUMENT_ROOT"]."/midnight/shared/public/classes/FileRoute.php";
 
-class BoardRoute extends Routable {
+class BoardRoute extends FileRoute {
+    function uploadFile(){
+        $img = $_FILES["img"];
+//        echo json_encode($img);
+        $userKey = $_REQUEST["userKey"] == "" ? 0 : $_REQUEST["userKey"];
+        $res = $this->procFiles($img, $userKey);
+//        echo json_encode($res);
+        $fileId = $res[$img["name"]]["id"];
+        return Routable::response(1, "succ", $this->getRow("SELECT * FROM tblFile WHERE id = '{$fileId}'"));
+    }
 
     function likeBoard(){
         $uid = $_REQUEST["userId"];
