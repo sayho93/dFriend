@@ -53,7 +53,7 @@ class WebRoute extends Routable {
                 ORDER BY RAND()
             ) as tmp
             ON U.id = tmp.id
-            WHERE U.id != '{$id}'
+            WHERE U.id != '{$id}' AND U.status = 1
             ORDER BY matchCnt DESC
             LIMIT 10;
         ";
