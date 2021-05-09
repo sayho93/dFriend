@@ -104,22 +104,10 @@ class UserAuthRoute extends FileRoute {
         $sex = $_REQUEST["sex"];
         $age = $_REQUEST["age"];
         $desc = $_REQUEST["desc"];
-        $img = $_FILES["img"];
+        $profileId = $_REQUEST["profileId"];
 
-        $thumbId = 0;
-        if($img["tmp_name"][0] != ""){
-            $tmp = $this->procFiles($img, $userId);
-//            echo count($img["name"]);
-            $idx = 0;
-            foreach($img["name"] as $item){
-                if(idx == 0) $thumbId = $tmp[$item]["id"];
-                $fileId = $tmp[$item]["id"];
-//                echo $fileId;
-                $idx++;
-            }
-        }
-
-        if($sex === "" || $age === "" || $desc === "") return Routable::response(-1, "정보를 모두 기입해 주세요");
+        if($sex === "" || $age === "" || $desc === "" || $profileId === "")
+            return Routable::response(-1, "정보를 모두 기입해 주세요");
 
         $ins = "
             UPDATE tblUser
@@ -127,7 +115,7 @@ class UserAuthRoute extends FileRoute {
                 `identity` = '{$sex}',
                 `age` = '{$age}',
                 `desc` = '{$desc}',
-                `profileId` = '{$thumbId}'
+                `profileId` = '{$profileId}'
             WHERE id = '{$userId}'
         ";
         $this->update($ins);
