@@ -29,7 +29,7 @@ class WebRoute extends Routable {
     }
 
     function getCharacterList(){
-        return $this->getArray("SELECT * FROM tblCharacter");
+        return Routable::response(1, "succ", $this->getArray("SELECT * FROM tblCharacter"));
     }
 
     function getRecomUser(){
@@ -58,6 +58,14 @@ class WebRoute extends Routable {
             LIMIT 10;
         ";
         return Routable::response(1, "succ", $this->getArray($ins));
+    }
+
+    function sendChatPush(){
+        $id = $_REQUEST["id"];
+        $title = $_REQUEST["title"];
+        $message = $_REQUEST["message"];
+        $token = $this->getValue("SELECT pushToken From tblUser WHERE id = '{$id}' LIMIT 1", "pushToken");
+        return $this->sendPush($title, $message, "", $token);
     }
 
 }

@@ -105,6 +105,8 @@ class UserAuthRoute extends FileRoute {
         $age = $_REQUEST["age"];
         $desc = $_REQUEST["desc"];
         $profileId = $_REQUEST["profileId"];
+        if($userId == "")
+            return Routable::response(-2, "에러 발생! 관리자에게 문의하세요");
 
         if($sex === "" || $age === "" || $desc === "" || $profileId === "")
             return Routable::response(-1, "정보를 모두 기입해 주세요");
@@ -119,7 +121,7 @@ class UserAuthRoute extends FileRoute {
             WHERE id = '{$userId}'
         ";
         $this->update($ins);
-        return Routable::response(1, "succ");
+        return Routable::response(1, "succ", $this->getRow("SELECT * FROM tblUser WHERE id = '{$userId}'"));
     }
 
     /**

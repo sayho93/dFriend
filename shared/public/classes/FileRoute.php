@@ -21,7 +21,7 @@ class FileRoute extends Routable {
             $ext = pathinfo($rawName, PATHINFO_EXTENSION);
             $size = $file["size"];
 
-            $res = $this->procDir($tmp_name);
+            $res = $this->procDir($file);
             $short = $res["short"];
             $targetPath = $res["targetPath"];
             $tmp_name = $res["tmp_name"];
@@ -48,7 +48,7 @@ class FileRoute extends Routable {
                 // Ext check
                 $size = $file["size"][$e];
 
-                $res = $this->procDir($tmp_name);
+                $res = $this->procDir($file);
                 $short = $res["short"];
                 $targetPath = $res["targetPath"];
                 $tmp_name = $res["tmp_name"];
@@ -71,7 +71,8 @@ class FileRoute extends Routable {
         return $fileInfo;
     }
 
-    function procDir($tmp_name){
+    function procDir($file){
+        $tmp_name = $file["tmp_name"];
         $targetDir = $this->PF_FILE_TEMP_PATH;
         $shortTargetDir = $this->PF_FILE_TEMP_SHORT;
         if(!self::createDir($targetDir)){
@@ -87,7 +88,47 @@ class FileRoute extends Routable {
         }else{
             return self::response(-98, "파일 처리 중 오류가 발생하였습니다.", $movedFlag);
         }
+
+        $this->imageFixOrientation($file, $targetPath);
+
         return array("targetPath" => $targetPath, "tmp_name" => $tmp_name, "short" => $short);
+    }
+
+    function imageFixOrientation(&$image, $filename) {
+        $tmp_name = $image["tmp_name"];
+        $check = getimagesize($filename);
+        if($check !== false){
+            $info = $check;
+            if ($info['mime'] == 'image/jpeg') $image = imagecreatefromjpeg($filename);
+            elseif ($info['mime'] == 'image/gif') $image = imagecreatefromgif($filename);
+            elseif ($info['mime'] == 'image/png') $image = imagecreatefrompng($filename);
+        }
+
+        if($info['mime'] == 'image/jpeg' || $info['mime'] == 'image/png') {
+            $path = $filename . ".jpg";
+            $test = move_uploaded_file($tmp_name, $path);
+            echo json_encode($test);
+            echo $path;
+
+            $exif = exif_read_data($path);
+            echo json_encode($exif);
+            if(isset($exif['Orientation'])) {
+                switch($exif['Orientation']){
+                    case 3:
+                        $image = imagerotate($image, 180, 0);
+                        break;
+
+                    case 6:
+                        $image = imagerotate($image, -90, 0);
+                        break;
+
+                    case 8:
+                        $image = imagerotate($image, 90, 0);
+                        break;
+                }
+            }
+            echo json_encode($image);
+        }
     }
 
     function procFilesUnbound(){
