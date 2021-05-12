@@ -29,26 +29,40 @@ class WebRoute extends Routable {
     }
 
     function getCharacterList(){
-        return Routable::response(1, "succ", $this->getArray("SELECT * FROM tblCharacter"));
+        return Routable::response(1, "succ", $this->getArray("SELECT * FROM tblCharacter ORDER BY id"));
     }
 
     function getRecomUser(){
         $id = $_REQUEST["id"];
 
         $ins = "
-            SELECT *
+            SELECT 
+                   *,
+                   (SELECT `path` FROM tblFile F WHERE F.id = U.profileId) AS profilePath,
+                   (SELECT COUNT(*) FROM tblFollow WHERE followedId = U.id) AS followers,
+                   (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT id FROM tblBoard WHERE userKey = U.id)) AS likes,
+                   (SELECT COUNT(*) FROM tblBoard B WHERE B.userKey = U.id) AS boards,
+                   (SELECT COUNT(*) > 0 FROM tblFollow WHERE userId='{$id}' AND followedId=U.id) AS followingYou
             FROM tblUser U JOIN (
                 SELECT
                     id,
-                    (SELECT COUNT(*) FROM tblCharMap WHERE userId = id AND characterId IN (SELECT characterId FROM tblCharMap WHERE userId = '39')) AS matchCnt,(
+                    (SELECT COUNT(*) FROM tblCharMap WHERE userId = id AND characterId IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS matchCnt, (
                         SELECT GROUP_CONCAT(description separator ',') 
                         FROM tblCharMap CM JOIN tblCharacter C on characterId = C.id 
                         WHERE CM.userId = IU.id AND characterId IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')
-                    ) AS matchDesc,(
+                    ) AS matchDesc, (
+                        SELECT GROUP_CONCAT(characterId separator  ',')
+                        FROM tblCharMap CM JOIN tblCharacter C on characterId = C.id    
+                        WHERE CM.userId = IU.id AND characterId IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')
+                    ) AS matchIds, (
                         SELECT GROUP_CONCAT(description separator ',') 
                         FROM tblCharMap CM JOIN tblCharacter C on characterId = C.id 
                         WHERE CM.userId = IU.id AND characterId NOT IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')
-                    ) AS nonMatchDesc
+                    ) AS nonMatchDesc, (
+                        SELECT GROUP_CONCAT(characterId separator ',') 
+                        FROM tblCharMap CM JOIN tblCharacter C on characterId = C.id 
+                        WHERE CM.userId = IU.id AND characterId NOT IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')
+                    ) AS nonMatchIds
                 FROM tblUser IU
                 ORDER BY RAND()
             ) as tmp
@@ -57,6 +71,7 @@ class WebRoute extends Routable {
             ORDER BY matchCnt DESC
             LIMIT 10;
         ";
+        return $this->getArray($ins);
         return Routable::response(1, "succ", $this->getArray($ins));
     }
 

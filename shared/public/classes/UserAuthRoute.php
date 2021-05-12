@@ -139,7 +139,18 @@ class UserAuthRoute extends FileRoute {
             $ins = "INSERT INTO tblCharMap(`userId`, `characterId`) VALUES ({$userId}, {$item})";
             $this->update($ins);
         }
-        return Routable::response(1, "가입되었습니다");
+        return Routable::response(1, "가입되었습니다", $this->getRow("SELECT * FROM tblUser WHERE id = '{$userId}'"));
+    }
+
+    function getUserCharacter(){
+        $userId = $_REQUEST["userId"];
+        $ins = "
+            SELECT * 
+            FROM tblCharMap CM JOIN tblCharacter C ON CM.characterId = C.id
+            WHERE userId = '{$userId}'
+            ORDER BY id
+        ";
+        return Routable::response(1, "", $this->getArray($ins));
     }
 
     function revertJoin(){
