@@ -106,12 +106,8 @@ class FileRoute extends Routable {
 
         if($info['mime'] == 'image/jpeg' || $info['mime'] == 'image/png') {
             $path = $filename . ".jpg";
-            $test = move_uploaded_file($tmp_name, $path);
-            echo json_encode($test);
-            echo $path;
-
+            copy($filename, $path);
             $exif = exif_read_data($path);
-            echo json_encode($exif);
             if(isset($exif['Orientation'])) {
                 switch($exif['Orientation']){
                     case 3:
@@ -127,7 +123,8 @@ class FileRoute extends Routable {
                         break;
                 }
             }
-            echo json_encode($image);
+            imagejpeg($image, $filename);
+            unlink($path);
         }
     }
 
