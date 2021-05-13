@@ -428,7 +428,7 @@ class UserAuthRoute extends FileRoute {
                 (SELECT COUNT(*) FROM tblBoard B WHERE B.`userKey` = U.`id`) AS boards,
                 (SELECT COUNT(*) > 0 FROM tblFollow WHERE userId='{$id}' AND followedId=U.`id`) AS followingYou,
                 (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = '{$id}') AS characteristics,
-                (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS characteristicStr,
+                (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS characteristicStr
                 FROM tblUser U WHERE U.`id`='{$id}' LIMIT 1";
         $ret = $this->getRow($slt);
 
