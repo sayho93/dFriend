@@ -16,7 +16,7 @@ class UserAuthRoute extends FileRoute {
                 AuthUtil::requestLogin($val);
                 $upt = "UPDATE tblUser SET accessDate=NOW() WHERE `id`='{$val["id"]}'";
                 $this->update($upt);
-                return Routable::response(1, "정상적으로 로그인되었습니다.");
+                return Routable::response(1, "정상적으로 로그인되었습니다.", $this->getUserWithId($val["id"]));
             }
         }else{
             return Routable::response(2, "일치하는 회원 정보를 찾을 수 없습니다.");
