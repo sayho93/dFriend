@@ -233,21 +233,23 @@ class BoardRoute extends FileRoute {
     }
 
     function uploadBoard(){
-        $title = $this->req("title");
-        $content = $this->req("content");
-        $extra = $this->req("extra");
-        $subtitle = $this->req("subtitle");
+        $title = $_REQUEST["title"];
+        $content = $_REQUEST["content"];
+        $extra = $_REQUEST["extra"];
+        $subtitle = $_REQUEST["subtitle"];
         $sidoId = $_REQUEST["sidoId"] == "" ? 0 : $_REQUEST["sidoId"];
         $userKey = $_REQUEST["userKey"];
-        $url = $this->req("url");
+        $url = $_REQUEST["url"];
         $type = $_REQUEST["type"];
-        $exp = "'".$this->req("expireDate")."'";
+        $exp = "'".$_REQUEST["expireDate"]."'";
         $lat = $_REQUEST["lat"] == "" ? 0 : $_REQUEST["lat"];
         $lng = $_REQUEST["lng"] == "" ? 0 : $_REQUEST["lng"];
-        $phone = $this->req("phone");
-        $geo = $this->req("geo");
+        $phone = $_REQUEST["phone"];
+        $geo = $_REQUEST["geo"];
 
         $alert = $_REQUEST["alert"];
+
+//        var_dump($_REQUEST);
 
         if($exp == "''") $exp = "NULL";
 
@@ -271,8 +273,8 @@ class BoardRoute extends FileRoute {
 
         if($file != ""){
             $ins = "INSERT INTO `app_midnight`.`tblFile` 
-                    (`path`, `boardId`, `userKey`, `desc`, `regDate`)
-                    VALUES ('{$file}', '{$bid}', '{$userKey}', '{$fileDesc}', NOW());";
+                    (`path`, `shortPath`, `boardId`, `userKey`, `desc`, `regDate`)
+                    VALUES ('{$file}', '{$file}', '{$bid}', '{$userKey}', '{$fileDesc}', NOW());";
             $this->update($ins);
         }
 

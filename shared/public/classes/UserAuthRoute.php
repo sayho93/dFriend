@@ -378,8 +378,8 @@ class UserAuthRoute extends FileRoute {
         }
 
         $slt = "SELECT *,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
@@ -402,8 +402,8 @@ class UserAuthRoute extends FileRoute {
         $id = $_REQUEST["id"];
 
         $slt = "SELECT *,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
@@ -420,8 +420,8 @@ class UserAuthRoute extends FileRoute {
     function renewUser(){
         $id = $_REQUEST["id"];
         $slt = "SELECT *,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
@@ -437,8 +437,8 @@ class UserAuthRoute extends FileRoute {
 
     function getUserWithId($id){
         $slt = "SELECT *,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
@@ -460,8 +460,8 @@ class UserAuthRoute extends FileRoute {
         $id = $_REQUEST["id"];
 
         $slt = "SELECT *,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
@@ -481,8 +481,8 @@ class UserAuthRoute extends FileRoute {
         $dis = $_REQUEST["distance"] == "" ? 5 : $_REQUEST["distance"];
 
         $slt = "SELECT *,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
@@ -508,8 +508,8 @@ class UserAuthRoute extends FileRoute {
         $limit = $_REQUEST["limit"] == "" ? 10 : $_REQUEST["limit"];
 
         $slt = "SELECT *,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
@@ -535,8 +535,8 @@ class UserAuthRoute extends FileRoute {
         $limit = $_REQUEST["limit"] == "" ? 10 : $_REQUEST["limit"];
 
         $slt = "SELECT *,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
-                (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
+                (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
                 (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
