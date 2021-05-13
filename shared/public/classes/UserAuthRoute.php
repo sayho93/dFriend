@@ -76,8 +76,7 @@ class UserAuthRoute extends FileRoute {
                 $email, $nickname
                 );
             $id = $this->mysql_insert_id();
-            $userInfo = $this->getRow("SELECT * FROM tblUser WHERE id = '{$id}'");
-            return Routable::response(1, "입력하신 이메일로 인증 링크가 발송되었습니다.", $userInfo);
+            return Routable::response(1, "입력하신 이메일로 인증 링크가 발송되었습니다.", $this->getUserWithId($id));
         }
     }
 
@@ -120,8 +119,7 @@ class UserAuthRoute extends FileRoute {
                 `profileId` = '{$profileId}'
             WHERE id = '{$userId}'
         ";
-        $this->update($ins);
-        return Routable::response(1, "succ", $this->getRow("SELECT * FROM tblUser WHERE id = '{$userId}'"));
+        return Routable::response(1, "succ", $this->getUserWithId($userId));
     }
 
     /**
@@ -139,7 +137,7 @@ class UserAuthRoute extends FileRoute {
             $ins = "INSERT INTO tblCharMap(`userId`, `characterId`) VALUES ({$userId}, {$item})";
             $this->update($ins);
         }
-        return Routable::response(1, "가입되었습니다", $this->getRow("SELECT * FROM tblUser WHERE id = '{$userId}'"));
+        return Routable::response(1, "가입되었습니다", $this->getUserWithId($userId));
     }
 
     function getUserCharacter(){
@@ -428,11 +426,27 @@ class UserAuthRoute extends FileRoute {
                 (SELECT COUNT(*) FROM tblBoard B WHERE B.`userKey` = U.`id`) AS boards,
                 (SELECT COUNT(*) > 0 FROM tblFollow WHERE userId='{$id}' AND followedId=U.`id`) AS followingYou,
                 (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = '{$id}') AS characteristics,
-                (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS characteristicStr
+                (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS characteristicStr,
                 FROM tblUser U WHERE U.`id`='{$id}' LIMIT 1";
         $ret = $this->getRow($slt);
 
         return self::response(1, "", $ret);
+    }
+
+    function getUserWithId($id){
+        $slt = "SELECT *,
+                (SELECT `path` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
+                (SELECT `path` FROM tblFile F WHERE F.`id`=U.bgid) AS bgPath,
+                (SELECT `abbreviation` FROM tblZipSido Z WHERE Z.sidoID=U.sido) AS strSido,
+                (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
+                (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
+                (SELECT COUNT(*) FROM tblBoard B WHERE B.`userKey` = U.`id`) AS boards,
+                (SELECT COUNT(*) > 0 FROM tblFollow WHERE userId='{$id}' AND followedId=U.`id`) AS followingYou,
+                (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = '{$id}') AS characteristics,
+                (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS characteristicStr
+                FROM tblUser U WHERE U.`id`='{$id}' LIMIT 1";
+        $ret = $this->getRow($slt);
+        return $ret;
     }
 
     function requestLogout(){

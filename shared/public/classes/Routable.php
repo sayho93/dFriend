@@ -5,10 +5,10 @@ include_once $_SERVER["DOCUMENT_ROOT"]."/midnight/shared/bases/modules/email/Ema
 
 class Routable extends Databases {
 
-    public static function response($returnCode, $returnMessage = "", $data = ""){
+    public static function response($returnCode, $returnMessage = "", $data = "", $isDevise = true){
         $retVal = array("returnCode" => $returnCode, "returnMessage" => $returnMessage, "data" => $data);
-        return json_encode($retVal);
-        return $retVal;
+        if($isDevise) return json_encode($retVal);
+        else return $retVal;
     }
 
     function sendPushReq(){

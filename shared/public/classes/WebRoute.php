@@ -71,7 +71,6 @@ class WebRoute extends Routable {
             ORDER BY matchCnt DESC
             LIMIT 10;
         ";
-        return $this->getArray($ins);
         return Routable::response(1, "succ", $this->getArray($ins));
     }
 
