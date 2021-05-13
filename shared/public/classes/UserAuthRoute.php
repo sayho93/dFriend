@@ -128,6 +128,8 @@ class UserAuthRoute extends FileRoute {
     function setUserCharacter(){
         $userId = $_REQUEST['userId'];
         $charList = $_REQUEST['charList'];
+        $charList = json_decode($charList);
+
         if(count($charList) < 3) return Routable::response(2, "관심사를 3개 이상 선택해 주세요");
         if(count($charList) > 6) return Routable::response(3, "관심사는 최대 6개까지 선택할 수 있습니다.");
 
