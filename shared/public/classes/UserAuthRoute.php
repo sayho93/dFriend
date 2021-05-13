@@ -488,7 +488,9 @@ class UserAuthRoute extends FileRoute {
                 (SELECT COUNT(*) > 0 FROM tblFollow WHERE userId='{$id}' AND followedId=U.`id`) AS followingYou,
                 IFNULL(ROUND((TO_DAYS(NOW()) - (TO_DAYS(birth))) / 365), 0) AS age,
                 (6371*ACOS(COS(RADIANS({$lat}))*COS(RADIANS(lat))*COS(RADIANS(lng)
-                -RADIANS({$lng}))+SIN(RADIANS({$lat}))*SIN(RADIANS(lat)))) AS distance
+                -RADIANS({$lng}))+SIN(RADIANS({$lat}))*SIN(RADIANS(lat)))) AS distance,
+                (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = '{$id}') AS characteristics,
+                (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS characteristicStr
                 FROM tblUser U WHERE `lat`!=0 AND `lng`!=0 AND `location`=1 AND U.`id`!='{$id}' HAVING distance <= '{$dis}'
                 ORDER BY distance ASC;";
 
@@ -513,7 +515,9 @@ class UserAuthRoute extends FileRoute {
                 (SELECT COUNT(*) > 0 FROM tblFollow WHERE userId='{$id}' AND followedId=U.`id`) AS followingYou,
                 IFNULL(ROUND((TO_DAYS(NOW()) - (TO_DAYS(birth))) / 365), 0) AS age,
                 (6371*ACOS(COS(RADIANS({$lat}))*COS(RADIANS(lat))*COS(RADIANS(lng)
-                -RADIANS({$lng}))+SIN(RADIANS({$lat}))*SIN(RADIANS(lat)))) AS distance
+                -RADIANS({$lng}))+SIN(RADIANS({$lat}))*SIN(RADIANS(lat)))) AS distance,
+                (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = '{$id}') AS characteristics,
+                (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS characteristicStr
                 FROM tblUser U
                 ORDER BY likes DESC LIMIT {$limit};";
 
@@ -538,7 +542,9 @@ class UserAuthRoute extends FileRoute {
                 (SELECT COUNT(*) > 0 FROM tblFollow WHERE userId='{$id}' AND followedId=U.`id`) AS followingYou,
                 IFNULL(ROUND((TO_DAYS(NOW()) - (TO_DAYS(birth))) / 365), 0) AS age,
                 (6371*ACOS(COS(RADIANS({$lat}))*COS(RADIANS(lat))*COS(RADIANS(lng)
-                -RADIANS({$lng}))+SIN(RADIANS({$lat}))*SIN(RADIANS(lat)))) AS distance
+                -RADIANS({$lng}))+SIN(RADIANS({$lat}))*SIN(RADIANS(lat)))) AS distance,
+                (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = '{$id}') AS characteristics,
+                (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS characteristicStr
                 FROM tblUser U
                 ORDER BY followers DESC LIMIT {$limit};";
 
