@@ -124,17 +124,16 @@ class WebRoute extends Routable {
         $ins = "
             SELECT
                 *,
-                U.id as id,
                 (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
                 (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = U.id) AS characteristics,
                 (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = U.id)) AS characteristicStr
             FROM tblUser U JOIN tblMatch M ON U.id = {$columns[0]} 
-            WHERE {$columns[1]} = '{$myId}' AND status != 1;
+            WHERE {$columns[1]} = '{$myId}' AND M.status != 1;
         ";
         return Routable::response(1, "succ", $this->getArray($ins));
     }
 
-
+    //TODO 채팅방 나갈 때 tblMatch ROW 반드시 제거 필요
 }
