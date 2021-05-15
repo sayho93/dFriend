@@ -106,6 +106,9 @@ class WebRoute extends Routable {
         $opponentId = $_REQUEST["opponentId"];
         $flag = $_REQUEST["flag"];
 
+        $user = $this->getRow("SELECT * FROM tblUser WHERE id = '{$myId}' LIMIT 1");
+        $token = $this->getValue("SELECT pushToken FROM tblUser WHERE id = '{$opponentId}' LIMIT 1", "pushToken");
+
         $title = "";
         $message = "";
         if($flag == "3"){
@@ -117,8 +120,6 @@ class WebRoute extends Routable {
                 "UPDATE tblMatch SET status = '{$flag}' WHERE requestUserId = '{$opponentId}' AND receiverUserId = '{$myId}'"
             );
         }
-        $user = $this->getRow("SELECT nickname FROM tblUser WHERE id = '{$myId}' LIMIT 1");
-        $token = $this->getValue("SELECT pushToken FROM tblUser WHERE id = '{$opponentId}' LIMIT 1", "pushToken");
 
         switch($flag){
             case 1:
@@ -163,7 +164,7 @@ class WebRoute extends Routable {
         $ins = "
             SELECT COUNT(*) AS cnt
             FROM tblUser U JOIN tblMatch M ON U.id = M.receiverUserId
-            WHERE M.requestUserId = '{$myId}' AND M.status != 1;
+            WHERE M.requestUserId = '{$myId}' AND M.status != 1 AND M.status != 2;
         ";
         $reqCnt = $this->getValue($ins, "cnt");
 
@@ -175,17 +176,21 @@ class WebRoute extends Routable {
         $myId = $_REQUEST['myId'];
         $flag = $_REQUEST['flag'];
         $columns = array("M.requestUserId", "M.receiverUserId");
-        if($flag == "req") $columns = array_reverse($columns);
+        $options = array("WHERE M.status != 2", "");
+        if($flag == "req"){
+            $columns = array_reverse($columns);
+            $options = array_reverse($options);
+        }
         $ins = "
             SELECT
-                *,
+                U.*,
                 (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
                 (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = U.id) AS characteristics,
                 (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = U.id)) AS characteristicStr
             FROM tblUser U JOIN tblMatch M ON U.id = {$columns[0]} 
-            WHERE {$columns[1]} = '{$myId}' AND M.status != 1;
+            WHERE {$columns[1]} = '{$myId}' AND M.status != 1 {$options[1]};
         ";
         return Routable::response(1, "succ", $this->getArray($ins));
     }
