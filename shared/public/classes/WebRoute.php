@@ -176,7 +176,7 @@ class WebRoute extends Routable {
         $myId = $_REQUEST['myId'];
         $flag = $_REQUEST['flag'];
         $columns = array("M.requestUserId", "M.receiverUserId");
-        $options = array("WHERE M.status != 2", "");
+        $options = array("AND M.status != 2", "");
         if($flag == "req"){
             $columns = array_reverse($columns);
             $options = array_reverse($options);
