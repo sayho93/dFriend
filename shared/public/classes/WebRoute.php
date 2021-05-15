@@ -105,16 +105,71 @@ class WebRoute extends Routable {
         $myId = $_REQUEST["myId"];
         $opponentId = $_REQUEST["opponentId"];
         $flag = $_REQUEST["flag"];
+
+        $title = "";
+        $message = "";
         if($flag == "3"){
             $tmp = $myId;
             $myId = $opponentId;
             $opponentId = $tmp;
+        }else{
+            $this->update(
+                "UPDATE tblMatch SET status = '{$flag}' WHERE requestUserId = '{$opponentId}' AND receiverUserId = '{$myId}'"
+            );
         }
-        $this->update(
-            "UPDATE tblMatch SET status = '{$flag}' WHERE requestUserId = '{$opponentId}' AND receiverUserId = '{$myId}'"
-        );
-        return Routable::response(1, "succ");
+        $user = $this->getRow("SELECT nickname FROM tblUser WHERE id = '{$myId}' LIMIT 1");
+        $token = $this->getValue("SELECT pushToken FROM tblUser WHERE id = '{$opponentId}' LIMIT 1", "pushToken");
+
+        switch($flag){
+            case 1:
+                $title = "매칭수락";
+                $message = "{$user["nickname"]} 님께서 대화신청을 수락했습니다";
+                break;
+            case 2:
+                $title = "매칭거절";
+                $message = "{$user["nickname"]} 님께서 대화신청을 거절했습니다";
+                break;
+            case 3:
+                $title = "매칭 취소";
+                $message = "{$user["nickname"]} 님께서 대화신청을 취소하셨습니다.";
+                $ins = "DELETE FROM tblMatch WHERE requestUserId = '{$opponentId}' AND receiverUserId = '{$myId}'";
+                $this->update($ins);
+                break;
+            default:
+                break;
+        }
+
+        $this->sendPush($title, $message, "", $token);
+        return Routable::response($flag);
     }
+
+    function checkMatchStat(){
+        $myId = $_REQUEST["myId"];
+        $opponentId = $_REQUEST["opponentId"];
+        $ins = "SELECT * FROM tblMatch WHERE (requestUserId = '{$myId}' AND receiverUserId = '{$opponentId}') OR (requestUserId = '{$opponentId}' AND receiverUserId = '{$myId}') LIMIT 1";
+        $res = $this->getRow($ins);
+        $ret = $res == "" ? -1 : $res["status"];
+        return Routable::response($ret);
+    }
+
+    function matchCount(){
+        $myId = $_REQUEST["myId"];
+        $ins = "
+            SELECT COUNT(*) AS cnt
+            FROM tblUser U JOIN tblMatch M ON U.id = M.requestUserId
+            WHERE M.receiverUserId = '{$myId}' AND M.status != 1;
+        ";
+        $recvCnt = $this->getValue($ins, "cnt");
+        $ins = "
+            SELECT COUNT(*) AS cnt
+            FROM tblUser U JOIN tblMatch M ON U.id = M.receiverUserId
+            WHERE M.requestUserId = '{$myId}' AND M.status != 1;
+        ";
+        $reqCnt = $this->getValue($ins, "cnt");
+
+        return self::response(1, "", array("req" => $reqCnt, "recv" => $recvCnt));
+    }
+
 
     function myMatchStat(){
         $myId = $_REQUEST['myId'];
