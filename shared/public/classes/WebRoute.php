@@ -69,9 +69,9 @@ class WebRoute extends Routable {
             ON U.id = tmp.id
             WHERE U.id != '{$id}' AND U.status = 1
             ORDER BY matchCnt DESC
-            LIMIT 10;
+            LIMIT 1;
         ";
-        return Routable::response(1, "succ", $this->getArray($ins));
+        return Routable::response(1, "succ", $this->getRow($ins));
     }
 
     function sendChatPush(){
