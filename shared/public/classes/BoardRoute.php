@@ -82,7 +82,6 @@ class BoardRoute extends FileRoute {
         $start = $page * $unit;
 
         $userId = $_REQUEST["userId"] == "" ? 0 : $_REQUEST["userId"];
-
         $slt = "SELECT COUNT(*) AS cnt FROM tblBoard WHERE `type`={$type} AND `status`=1";
         $total = $this->getValue($slt, "cnt");
         $totalPage = ceil($total / $unit);
@@ -118,8 +117,9 @@ class BoardRoute extends FileRoute {
         $start = $page * $unit;
 
         $userId = $_REQUEST["userId"] == "" ? 0 : $_REQUEST["userId"];
+        $whereStmt = " AND (userKey in (SELECT followedId FROM tblFollow WHERE userId = '{$userId}') OR userKey = '{$userId}')";
 
-        $slt = "SELECT COUNT(*) AS cnt FROM tblBoard WHERE `status`=1 AND (`type`=0 OR `type`=1)";
+        $slt = "SELECT COUNT(*) AS cnt FROM tblBoard WHERE `status`=1 AND (`type`=0 OR `type`=1) {$whereStmt}";
         $total = $this->getValue($slt, "cnt");
         $totalPage = ceil($total / $unit);
 
@@ -131,7 +131,7 @@ class BoardRoute extends FileRoute {
                 (SELECT COUNT(*) > 0 FROM tblLike L WHERE L.boardId=B.id AND L.userId='{$userId}' LIMIT 1) AS liked,
                 (SELECT COUNT(*) FROM tblComment C WHERE C.boardId=B.id LIMIT 1) AS comments,
                 U.nickname AS authorName
-                FROM tblBoard B LEFT JOIN tblUser U ON B.userKey=U.`id` WHERE B.`status`=1 AND (B.`type`=0 OR B.`type`=1)
+                FROM tblBoard B LEFT JOIN tblUser U ON B.userKey=U.`id` WHERE B.`status`=1 AND (B.`type`=0 OR B.`type`=1) {$whereStmt}
                 ORDER BY `id` DESC LIMIT {$start}, {$unit}";
         $arr = $this->getArray($slt);
 
@@ -154,11 +154,18 @@ class BoardRoute extends FileRoute {
         $unit = $_REQUEST["unit"] == "" ? 5 : $_REQUEST["unit"];
         $start = $page * $unit;
 
-        $slt = "SELECT COUNT(*) AS cnt FROM tblBoard WHERE `type`={$type} AND `status`=1";
+        //TODO
+        $userId = $_REQUEST["userId"];
+        $whereStmt = "";
+        if($type == 0){
+            $whereStmt .= "AND userKey in (SELECT followedId FROM tblFollow WHERE userId = '{$userId}'";
+        }
+
+        $slt = "SELECT COUNT(*) AS cnt FROM tblBoard WHERE `type`={$type} AND `status`=1 {$whereStmt}";
         $total = $this->getValue($slt, "cnt");
         $totalPage = ceil($total / $unit);
 
-        $slt = "SELECT * FROM tblBoard WHERE `type`={$type} AND `status`=1 ORDER BY `id` DESC LIMIT {$start}, {$unit}";
+        $slt = "SELECT * FROM tblBoard WHERE `type`={$type} AND `status`=1 {$whereStmt} ORDER BY `id` DESC LIMIT {$start}, {$unit}";
         $arr = $this->getArray($slt);
 
         for ($i = 0; $i < sizeof($arr); $i++){

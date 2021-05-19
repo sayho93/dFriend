@@ -37,7 +37,7 @@ class WebRoute extends Routable {
 
         $ins = "
             SELECT 
-                   *,
+                   U.*, matchCnt, matchDesc, matchIds, nonMatchDesc, nonMatchIds,
                    (SELECT `path` FROM tblFile F WHERE F.id = U.profileId) AS profilePath,
                    (SELECT COUNT(*) FROM tblFollow WHERE followedId = U.id) AS followers,
                    (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT id FROM tblBoard WHERE userKey = U.id)) AS likes,
