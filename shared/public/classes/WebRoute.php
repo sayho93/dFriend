@@ -69,12 +69,9 @@ class WebRoute extends Routable {
             ON U.id = tmp.id
             WHERE U.id != '{$id}' AND U.status = 1
             ORDER BY matchCnt DESC
-            LIMIT 5;
+            LIMIT 10;
         ";
-
-        $list = $this->getArray($ins);
-        shuffle($list);
-        return Routable::response(1, "succ", $list[0]);
+        return Routable::response(1, "succ", $this->getArray($ins));
     }
 
     function sendChatPush(){
@@ -109,6 +106,12 @@ class WebRoute extends Routable {
         $myId = $_REQUEST["myId"];
         $opponentId = $_REQUEST["opponentId"];
         $flag = $_REQUEST["flag"];
+
+        $user = $this->getRow("SELECT * FROM tblUser WHERE id = '{$myId}' LIMIT 1");
+        $token = $this->getValue("SELECT pushToken FROM tblUser WHERE id = '{$opponentId}' LIMIT 1", "pushToken");
+
+        $title = "";
+        $message = "";
         if($flag == "3"){
             $tmp = $myId;
             $myId = $opponentId;
