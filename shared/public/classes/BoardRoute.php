@@ -90,7 +90,7 @@ class BoardRoute extends FileRoute {
         $slt = "SELECT 
                 B.*, 
                 U.id AS authorId, 
-                (SELECT path FROM tblFile F WHERE F.`id`=U.profileId LIMIT 1) AS authorProfile, 
+                (SELECT shortPath FROM tblFile F WHERE F.`id`=U.profileId LIMIT 1) AS authorProfile, 
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId=B.id LIMIT 1) AS likes,
                 (SELECT COUNT(*) > 0 FROM tblLike L WHERE L.boardId=B.id AND L.userId='{$userId}' LIMIT 1) AS liked,
                 (SELECT COUNT(*) FROM tblComment C WHERE C.boardId=B.id LIMIT 1) AS comments,
@@ -126,7 +126,7 @@ class BoardRoute extends FileRoute {
         $slt = "SELECT 
                 B.*, 
                 U.id AS authorId, 
-                (SELECT path FROM tblFile F WHERE F.`id`=U.profileId LIMIT 1) AS authorProfile, 
+                (SELECT shortPath FROM tblFile F WHERE F.`id`=U.profileId LIMIT 1) AS authorProfile, 
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId=B.id LIMIT 1) AS likes,
                 (SELECT COUNT(*) > 0 FROM tblLike L WHERE L.boardId=B.id AND L.userId='{$userId}' LIMIT 1) AS liked,
                 (SELECT COUNT(*) FROM tblComment C WHERE C.boardId=B.id LIMIT 1) AS comments,

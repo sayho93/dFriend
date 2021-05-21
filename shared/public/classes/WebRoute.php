@@ -69,9 +69,12 @@ class WebRoute extends Routable {
             ON U.id = tmp.id
             WHERE U.id != '{$id}' AND U.status = 1
             ORDER BY matchCnt DESC
-            LIMIT 10;
+            LIMIT 5;
         ";
-        return Routable::response(1, "succ", $this->getArray($ins));
+
+        $list = $this->getArray($ins);
+        shuffle($list);
+        return Routable::response(1, "succ", $list[0]);
     }
 
     function sendChatPush(){
@@ -98,7 +101,8 @@ class WebRoute extends Routable {
         $this->update($ins);
         $token = $this->getValue("SELECT pushToken FROM tblUser WHERE id = '{$opponentId}' LIMIT 1", "pushToken");
         $nick = $this->getValue("SELECT nickname FROM tblUser WHERE id = '{$myId}' LIMIT 1", "nickname");
-        return $this->sendPush("매칭신청", "{$nick} 님으로부터 대화신청이 도착했습니다.", "", $token);
+        $res = $this->sendPush("매칭신청", "{$nick} 님으로부터 대화신청이 도착했습니다.", "", $token);
+        return Routable::response(1, "신청되었습니다.");
     }
 
     function updateMatchStat(){
@@ -113,7 +117,49 @@ class WebRoute extends Routable {
         $this->update(
             "UPDATE tblMatch SET status = '{$flag}' WHERE requestUserId = '{$opponentId}' AND receiverUserId = '{$myId}'"
         );
+
+        $me = $this->getRow("SELECT id, nickname FROM tblUser WHERE id = '{$myId}'");
+        $other = $this->getRow(("SELECT id, nickname FROM tblUser WHERE id = '{$opponentId}'"));
+
+        $ins = "
+            INSERT INTO tblChatRoom(name) 
+            VALUES('{$me["nickname"]}, {$other["nickname"]}')
+        ";
+        $this->update($ins);
+        $roomId = $this->mysql_insert_id();
+
+        $this->update("INSERT INTO tblChatMember(userId, roomId) VALUES('{$me["id"]}', '{$roomId}')");
+        $this->update("INSERT INTO tblChatMember(userId, roomId) VALUES('{$other["id"]}', '{$roomId}')");
+
+
         return Routable::response(1, "succ");
+    }
+
+    function checkMatchStat(){
+        $myId = $_REQUEST["myId"];
+        $opponentId = $_REQUEST["opponentId"];
+        $ins = "SELECT * FROM tblMatch WHERE (requestUserId = '{$myId}' AND receiverUserId = '{$opponentId}') OR (requestUserId = '{$opponentId}' AND receiverUserId = '{$myId}') LIMIT 1";
+        $res = $this->getRow($ins);
+        $ret = $res == "" ? -1 : $res["status"];
+        return Routable::response($ret);
+    }
+
+    function matchCount(){
+        $myId = $_REQUEST["myId"];
+        $ins = "
+            SELECT COUNT(*) AS cnt
+            FROM tblUser U JOIN tblMatch M ON U.id = M.requestUserId
+            WHERE M.receiverUserId = '{$myId}' AND M.status != 1;
+        ";
+        $recvCnt = $this->getValue($ins, "cnt");
+        $ins = "
+            SELECT COUNT(*) AS cnt
+            FROM tblUser U JOIN tblMatch M ON U.id = M.receiverUserId
+            WHERE M.requestUserId = '{$myId}' AND M.status != 1 AND M.status != 2;
+        ";
+        $reqCnt = $this->getValue($ins, "cnt");
+
+        return self::response(1, "", array("req" => $reqCnt, "recv" => $recvCnt));
     }
 
     function myMatchStat(){
@@ -135,5 +181,24 @@ class WebRoute extends Routable {
         return Routable::response(1, "succ", $this->getArray($ins));
     }
 
+
+    function getChatRoom(){
+        $id = $_REQUEST["myId"];
+        $ins = "
+        SELECT *
+        FROM tblUser
+        WHERE id IN (
+            select userId
+            FROM tblChatMember
+            WHERE roomId IN (
+                SELECT roomId
+                FROM tblChatRoom R JOIN tblChatMember M ON R.id = M.roomId
+                WHERE M.userid = '{$id}'
+            ) AND userId != '{$id}'
+        )
+        ";
+
+        return Routable::response(1, "", $this->getArray($ins));
+    }
     //TODO 채팅방 나갈 때 tblMatch ROW 반드시 제거 필요
 }
