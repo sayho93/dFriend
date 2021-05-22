@@ -169,17 +169,21 @@ class WebRoute extends Routable {
         $myId = $_REQUEST['myId'];
         $flag = $_REQUEST['flag'];
         $columns = array("M.requestUserId", "M.receiverUserId");
-        if($flag == "req") $columns = array_reverse($columns);
+        $options = array("AND M.status != 2", "");
+        if($flag == "req"){
+            $columns = array_reverse($columns);
+            $options = array_reverse($options);
+        }
         $ins = "
             SELECT
-                *,
+                U.*,
                 (SELECT `shortPath` FROM tblFile F WHERE F.`id`=U.profileId) AS profilePath,
                 (SELECT COUNT(*) FROM tblFollow WHERE followedId=U.`id`) AS followers,
                 (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT `id` FROM tblBoard WHERE userKey=U.`id`)) AS likes,
                 (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = U.id) AS characteristics,
                 (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = U.id)) AS characteristicStr
             FROM tblUser U JOIN tblMatch M ON U.id = {$columns[0]} 
-            WHERE {$columns[1]} = '{$myId}' AND M.status != 1;
+            WHERE {$columns[1]} = '{$myId}' AND M.status != 1 {$options[1]};
         ";
         return Routable::response(1, "succ", $this->getArray($ins));
     }
@@ -188,20 +192,60 @@ class WebRoute extends Routable {
     function getChatRoom(){
         $id = $_REQUEST["myId"];
         $ins = "
-        SELECT *
-        FROM tblUser
-        WHERE id IN (
-            select userId
-            FROM tblChatMember
-            WHERE roomId IN (
-                SELECT roomId
-                FROM tblChatRoom R JOIN tblChatMember M ON R.id = M.roomId
-                WHERE M.userid = '{$id}'
-            ) AND userId != '{$id}'
-        )
+        SELECT U.*, M.roomId as point
+        FROM tblUser U JOIN tblChatMember M ON U.id = M.userId
+        WHERE roomId IN (
+            SELECT roomId
+            FROM tblChatRoom R JOIN tblChatMember M ON R.id = M.roomId
+            WHERE M.userid = '{$id}'
+        ) AND userId != '{$id}'
         ";
 
         return Routable::response(1, "", $this->getArray($ins));
+    }
+
+    function chatMessageList(){
+        $rId = $_REQUEST["roomId"];
+        $page = $_REQUEST["page"];
+        $unit = $_REQUEST["unit"] == "" ? 100 : $_REQUEST["unit"];
+        $start = $page * $unit;
+
+        $slt = "SELECT COUNT(*) AS cnt FROM tblChatMessage WHERE roomId = '{$rId}' AND `status`=1";
+        $total = $this->getValue($slt, "cnt");
+        $totalPage = ceil($total / $unit);
+
+        $ins = "
+            SELECT * 
+            FROM (
+                 SELECT M.*, U.nickname, UNIX_TIMESTAMP(M.regDate) as `timestamp` 
+                FROM tblChatMessage  M JOIN tblUser U ON M.userId = U.id
+                WHERE roomId = '{$rId}'
+                ORDER BY `id` DESC LIMIT {$start}, {$unit}
+            ) tmp
+            ORDER BY tmp.id;
+        ";
+        $arr = $this->getArray($ins);
+
+        $retVal["list"] = json_encode($arr);
+        $retVal["totalPage"] = $totalPage."";
+        $retVal["total"] = $total."";
+        $retVal["page"] = $page."";
+        return self::response(1, "", $retVal);
+    }
+
+    function releaseMatch(){
+        $roomId = $_REQUEST["roomId"];
+        $users = $this->getArray("SELECT userId from tblChatMember WHERE roomId = '{$roomId}'");
+
+        $ins = "
+            DELETE FROM tblMatch
+            WHERE (requestUserId = '{$users[0]["userId"]}' AND receiverUserId = '{$users[1]["userId"]}')
+            OR (requestUserId = '{$users[1]["userId"]}' AND receiverUserId ] '{$users[1]["userId"]}')
+        ";
+        $this->update($ins);
+        $this->update("UPDATE tblChatRoom SET status = 0 WHERE id = '{$roomId}'");
+
+        return self::response(1, "");
     }
     //TODO 채팅방 나갈 때 tblMatch ROW 반드시 제거 필요
 }
