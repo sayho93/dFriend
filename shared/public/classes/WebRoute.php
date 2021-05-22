@@ -28,8 +28,17 @@ class WebRoute extends Routable {
         $this->update($upt);
     }
 
+    function getCharTypeList(){
+        return Routable::response(1, "succ", $this->getArray(
+            "SELECT * FROM tblCharType WHERE status=1 ORDER BY id"
+        ));
+    }
+
     function getCharacterList(){
-        return Routable::response(1, "succ", $this->getArray("SELECT * FROM tblCharacter ORDER BY id"));
+        $typeId =$_REQUEST["id"];
+        return Routable::response(1, "succ", $this->getArray(
+            "SELECT * FROM tblCharacter WHERE typeId = '{$typeId}' ORDER BY id"
+        ));
     }
 
     function getRecomUser(){
@@ -38,7 +47,7 @@ class WebRoute extends Routable {
         $ins = "
             SELECT 
                    *,
-                   (SELECT `path` FROM tblFile F WHERE F.id = U.profileId) AS profilePath,
+                   (SELECT `shortPath` FROM tblFile F WHERE F.id = U.profileId) AS profilePath,
                    (SELECT COUNT(*) FROM tblFollow WHERE followedId = U.id) AS followers,
                    (SELECT COUNT(*) FROM tblLike L WHERE L.boardId IN (SELECT id FROM tblBoard WHERE userKey = U.id)) AS likes,
                    (SELECT COUNT(*) FROM tblBoard B WHERE B.userKey = U.id) AS boards,
