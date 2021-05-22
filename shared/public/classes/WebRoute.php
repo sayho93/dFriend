@@ -69,9 +69,11 @@ class WebRoute extends Routable {
             ON U.id = tmp.id
             WHERE U.id != '{$id}' AND U.status = 1
             ORDER BY matchCnt DESC
-            LIMIT 10;
+            LIMIT 5;
         ";
-        return Routable::response(1, "succ", $this->getArray($ins));
+        $list = $this->getArray($ins);
+        shuffle($list);
+        return Routable::response(1, "succ", $list[0]);
     }
 
     function sendChatPush(){
@@ -192,7 +194,10 @@ class WebRoute extends Routable {
     function getChatRoom(){
         $id = $_REQUEST["myId"];
         $ins = "
-        SELECT U.*, M.roomId as point
+        SELECT 
+            U.*, M.roomId as point,
+            (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = U.id) AS characteristics,
+            (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = U.id)) AS characteristicStr
         FROM tblUser U JOIN tblChatMember M ON U.id = M.userId
         WHERE roomId IN (
             SELECT roomId
@@ -217,7 +222,7 @@ class WebRoute extends Routable {
         $ins = "
             SELECT * 
             FROM (
-                 SELECT M.*, U.nickname, UNIX_TIMESTAMP(M.regDate) as `timestamp` 
+                 SELECT M.*, U.nickname 
                 FROM tblChatMessage  M JOIN tblUser U ON M.userId = U.id
                 WHERE roomId = '{$rId}'
                 ORDER BY `id` DESC LIMIT {$start}, {$unit}
