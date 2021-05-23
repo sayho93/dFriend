@@ -174,50 +174,6 @@ class Routable extends Databases {
         return $Temp.$Rnd;
     }
 
-
-    //TODO file upload sample source
-    function upsertDoc(){
-        $check = file_exists($_FILES['docFile']['tmp_name']);
-
-        $id = $_REQUEST["id"];
-        $adminId = $this->admUser->id;
-        $title = $_REQUEST["title"];
-        $content = $_REQUEST["content"];
-        if($id == "") $id = 0;
-
-        $fileName = $_REQUEST["fileName"];
-        $filePath = $_REQUEST["filePath"];
-
-        if($check !== false){
-            $fName = $this->makeFileName() . "." . pathinfo(basename($_FILES["docFile"]["name"]),PATHINFO_EXTENSION);
-            $targetDir = $this->filePath . $fName;
-            $fileName = $_FILES["docFile"]["name"];
-            if(move_uploaded_file($_FILES["docFile"]["tmp_name"], $targetDir)) $filePath = $fName;
-            else return Routable::response(-1, "failed");
-        }
-
-        $sql = "INSERT INTO tblDocument(`id`, `adminId`, `title`, `fileName`, `filePath`, `content`, `regDate`)
-                    VALUES(
-                      '{$id}', 
-                      '{$adminId}', 
-                      '{$title}', 
-                      '{$fileName}',
-                      '{$filePath}',
-                      '{$content}',
-                      NOW()
-                    )
-                    ON DUPLICATE KEY UPDATE 
-                      `title` = '{$title}', 
-                      `adminId`='{$adminId}', 
-                      `content` = '{$content}',
-                      `fileName` = '{$fileName}',
-                      `filePath` = '{$filePath}'
-                  ";
-
-        $this->update($sql);
-        return Routable::response(1, "succ");
-    }
-
 }
 
 ?>

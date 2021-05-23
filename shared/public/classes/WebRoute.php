@@ -38,6 +38,22 @@ class WebRoute extends Routable {
         return Routable::response(1, "succ", $this->getArray("SELECT * FROM tblCharacter"));
     }
 
+    function getCharacters(){
+        $typeList = $this->getArray("SELECT id, `desc` FROM tblCharType WHERE status = 1");
+        $res = Array();
+        foreach($typeList as $item){
+            $list = $this->getArray("SELECT * FROM tblCharacter WHERE typeId = '{$item["id"]}' order by id");
+            $tmp = Array(
+                "id"=> $item["id"],
+                "desc"=> $item["desc"],
+                "list"=> $list
+            );
+            array_push($res, $tmp);
+        }
+        return self::response(1, "succ", $res);
+
+    }
+
     function getRecomUser(){
         $id = $_REQUEST["id"];
 
