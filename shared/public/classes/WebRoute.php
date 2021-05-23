@@ -35,10 +35,7 @@ class WebRoute extends Routable {
     }
 
     function getCharacterList(){
-        $typeId =$_REQUEST["id"];
-        return Routable::response(1, "succ", $this->getArray(
-            "SELECT * FROM tblCharacter WHERE typeId = '{$typeId}' ORDER BY id"
-        ));
+        return Routable::response(1, "succ", $this->getArray("SELECT * FROM tblCharacter"));
     }
 
     function getRecomUser(){
