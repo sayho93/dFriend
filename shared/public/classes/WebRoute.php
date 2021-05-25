@@ -35,7 +35,7 @@ class WebRoute extends Routable {
     }
 
     function getCharacterList(){
-        return Routable::response(1, "succ", $this->getArray("SELECT * FROM tblCharacter"));
+        return Routable::response(1, "succ", $this->getArray("SELECT id, description, regDate FROM tblCharacter"));
     }
 
     function getCharacters(){
