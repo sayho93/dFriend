@@ -141,22 +141,25 @@ class WebRoute extends Routable {
             $myId = $opponentId;
             $opponentId = $tmp;
         }
+
         $this->update(
             "UPDATE tblMatch SET status = '{$flag}' WHERE requestUserId = '{$opponentId}' AND receiverUserId = '{$myId}'"
         );
 
-        $me = $this->getRow("SELECT id, nickname FROM tblUser WHERE id = '{$myId}'");
-        $other = $this->getRow(("SELECT id, nickname FROM tblUser WHERE id = '{$opponentId}'"));
+        if($flag == 1){
+            $me = $this->getRow("SELECT id, nickname FROM tblUser WHERE id = '{$myId}'");
+            $other = $this->getRow(("SELECT id, nickname FROM tblUser WHERE id = '{$opponentId}'"));
 
-        $ins = "
-            INSERT INTO tblChatRoom(name) 
-            VALUES('{$me["nickname"]}, {$other["nickname"]}')
-        ";
-        $this->update($ins);
-        $roomId = $this->mysql_insert_id();
+            $ins = "
+                INSERT INTO tblChatRoom(name) 
+                VALUES('{$me["nickname"]}, {$other["nickname"]}')
+            ";
+            $this->update($ins);
+            $roomId = $this->mysql_insert_id();
 
-        $this->update("INSERT INTO tblChatMember(userId, roomId) VALUES('{$me["id"]}', '{$roomId}')");
-        $this->update("INSERT INTO tblChatMember(userId, roomId) VALUES('{$other["id"]}', '{$roomId}')");
+            $this->update("INSERT INTO tblChatMember(userId, roomId) VALUES('{$me["id"]}', '{$roomId}')");
+            $this->update("INSERT INTO tblChatMember(userId, roomId) VALUES('{$other["id"]}', '{$roomId}')");
+        }
 
 
         return Routable::response(1, "succ");
