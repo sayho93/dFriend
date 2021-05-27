@@ -65,6 +65,8 @@ class UserAuthRoute extends FileRoute {
         if($val != null){
             return Routable::response(2, "이미 존재하는 이메일 계정입니다.");
         }else{
+            if(!$this->checkBeta($email)) return Routable::response(4, "등록된 베타테스터 아이디가 아닙니다.\n 관리자에게 문의하세요");
+
             $ins = "INSERT INTO tblUser(email, `account`, `password`, `nickname`, `status`, regDate)
                     VALUES ('{$email}', '{$email}', '{$pwd}', '{$nickname}', 2, NOW())";
             $this->update($ins);
@@ -78,6 +80,12 @@ class UserAuthRoute extends FileRoute {
             $id = $this->mysql_insert_id();
             return Routable::response(1, "입력하신 이메일로 인증 링크가 발송되었습니다.", $this->getUserWithId($id));
         }
+    }
+
+    private function checkBeta($email){
+        $user = $this->getRow("SELECT * FROM tblBetaUser WHERE email = '{$email}' AND `status` = 1 LIMIT 1");
+        if($user == "") return false;
+        else return true;
     }
 
     public function checkNick(){
