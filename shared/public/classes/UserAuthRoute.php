@@ -8,6 +8,9 @@ class UserAuthRoute extends FileRoute {
         $email = $_REQUEST["email"];
         $pwd = $this->encryptAES256($_REQUEST["pwd"]);
 
+        $checkMail = preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email);
+        if(!$checkMail) return Routable::response(4, "올바른 이메일 형식을 입력해 주세요");
+
         $val = $this->getRow("SELECT * FROM tblUser WHERE email='{$email}' AND email != 'Unknown' AND `password`='{$pwd}' LIMIT 1");
         if($val != null){
             if($val["status"] == "2"){
@@ -51,6 +54,9 @@ class UserAuthRoute extends FileRoute {
         $email = $_REQUEST["email"];
         $pwd = $this->encryptAES256($_REQUEST["pwd"]);
         $nickname = $_REQUEST["nickname"];
+
+        $checkMail = preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email);
+        if(!$checkMail) return Routable::response(5, "올바른 이메일 형식을 입력해 주세요");
 
         $univ = explode("@", $email)[1];
         switch($univ){
