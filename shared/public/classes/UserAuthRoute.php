@@ -62,6 +62,9 @@ class UserAuthRoute extends FileRoute {
         switch($univ){
             case "dongguk.edu":
             case "dgu.ac.kr":
+            case "dgu.edu":
+            case "mail.dgu.edu":
+            case "mail.dongguk.edu":
                 break;
             default:
                 return Routable::response(3, "대학교 이메일을 사용해 주세요");
