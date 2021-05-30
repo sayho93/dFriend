@@ -235,6 +235,7 @@ class WebRoute extends Routable {
             FROM tblChatRoom R JOIN tblChatMember M ON R.id = M.roomId
             WHERE M.userid = '{$id}'
         ) AND userId != '{$id}'
+        ORDER BY M.regDate DESC;
         ";
 
         return Routable::response(1, "", $this->getArray($ins));
