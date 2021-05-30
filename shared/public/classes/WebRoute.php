@@ -157,6 +157,11 @@ class WebRoute extends Routable {
             $this->update($ins);
             $roomId = $this->mysql_insert_id();
 
+            $token = $this->getValue("SELECT pushToken FROM tblUser WHERE id = '{$opponentId}' LIMIT 1", "pushToken");
+            $nick = $this->getValue("SELECT nickname FROM tblUser WHERE id = '{$myId}' LIMIT 1", "nickname");
+            $res = $this->sendPush("매칭신청", "{$nick} 님이 매칭을 수락했습니다. 대화방이 생성됩니다.", "", $token);
+
+
             $this->update("INSERT INTO tblChatMember(userId, roomId) VALUES('{$me["id"]}', '{$roomId}')");
             $this->update("INSERT INTO tblChatMember(userId, roomId) VALUES('{$other["id"]}', '{$roomId}')");
         }
@@ -222,7 +227,8 @@ class WebRoute extends Routable {
         SELECT 
             U.*, M.roomId as point,
             (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = U.id) AS characteristics,
-            (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = U.id)) AS characteristicStr
+            (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = U.id)) AS characteristicStr,
+            (SELECT content FROM tblChatMessage WHERE roomId = M.roomId ORDER BY regDate DESC LIMIT 1) AS latestMsg
         FROM tblUser U JOIN tblChatMember M ON U.id = M.userId
         WHERE roomId IN (
             SELECT roomId
