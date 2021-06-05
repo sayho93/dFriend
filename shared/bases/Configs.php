@@ -54,7 +54,7 @@ if(!class_exists("Configs")) {
                     /**
                      * Database Config for DEV MODE
                      */
-                    DATABASE_HOST => "sayho.site",
+                    DATABASE_HOST => "193.122.100.94",
                     DATABASE_NAME => "app_midnight",
                     DATABASE_USER => "root",
                     DATABASE_PASSWORD => "fishcreek!@#$",

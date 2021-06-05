@@ -518,7 +518,7 @@ class UserAuthRoute extends FileRoute {
                 -RADIANS({$lng}))+SIN(RADIANS({$lat}))*SIN(RADIANS(lat)))) AS distance,
                 (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = '{$id}') AS characteristics,
                 (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS characteristicStr
-                FROM tblUser U WHERE `lat`!=0 AND `lng`!=0 AND `location`=1 AND U.`id`!='{$id}' HAVING distance <= '{$dis}'
+                FROM tblUser U WHERE `lat`!=0 AND `lng`!=0 AND `location`=1 AND U.`id`!='{$id}' HAVING distance <= '{$dis}' AND `status` = 1
                 ORDER BY distance ASC;";
 
         $ret = $this->getArray($slt);
@@ -546,6 +546,7 @@ class UserAuthRoute extends FileRoute {
                 (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = '{$id}') AS characteristics,
                 (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS characteristicStr
                 FROM tblUser U
+                WHERE U.status = 1
                 ORDER BY likes DESC LIMIT {$limit};";
 
         $ret = $this->getArray($slt);
@@ -573,6 +574,7 @@ class UserAuthRoute extends FileRoute {
                 (SELECT GROUP_CONCAT(characterId) FROM tblCharMap WHERE userId = '{$id}') AS characteristics,
                 (SELECT GROUP_CONCAT(description) FROM tblCharacter WHERE id IN (SELECT characterId FROM tblCharMap WHERE userId = '{$id}')) AS characteristicStr
                 FROM tblUser U
+                WHERE U.status = 1
                 ORDER BY followers DESC LIMIT {$limit};";
 
         $ret = $this->getArray($slt);
